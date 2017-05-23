@@ -4,7 +4,7 @@ public class User {
 
 	private String username;
 	private String password;
-	//private String birthday; den XREIAZETAIIIII!!!!!!
+	
 	
 	private ArrayList<Income> incomes;
 	private ArrayList<Expense> expenses;
@@ -38,15 +38,6 @@ public class User {
 		this.password = password;
 	}
 
-	// DEN XREAIZETAI!!!!!
-	/*public String getBirthday() {
-		return birthday;
-	}
-
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}*/
 
 
 	public void add_Income(Income aIncome){
