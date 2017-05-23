@@ -10,9 +10,8 @@ public class User {
 	private ArrayList<Expense> expenses;
 	private ArrayList<Estate> estates;
 	private ArrayList<Vehicle> vehicles;
-	/*// private double limit;  To evala se sxolio na doume se poia klasi tha bei...
-	//egw lew edw opws kai to checklimit afou edw einai h lista me ta eksoda
-	 */	
+	private double limit;
+	
 	public User(String username, String password) {
 		
 		this.username = username;
