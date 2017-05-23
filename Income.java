@@ -17,4 +17,30 @@ public class Income {
 		this.taxed = taxed;
 	}
 
+
+
+	public String getIn_tag() {
+		return in_tag;
+	}
+
+
+
+	public void setIn_tag(String in_tag) {
+		this.in_tag = in_tag;
+	}
+
+
+
+	public double getIn_amount() {
+		return in_amount;
+	}
+
+
+
+	public void setIn_amount(double in_amount) {
+		this.in_amount = in_amount;
+	}
+	
+	
+
 } 
