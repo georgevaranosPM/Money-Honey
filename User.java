@@ -6,10 +6,10 @@ public class User {
 	private String password;
 	
 	
-	private ArrayList<Income> incomes;
-	private ArrayList<Expense> expenses;
-	private ArrayList<Estate> estates;
-	private ArrayList<Vehicle> vehicles;
+	private ArrayList<Income> incomes = new ArrayList<Income>();
+	private ArrayList<Expense> expenses = new ArrayList<Expense>();
+	private ArrayList<Estate> estates = new ArrayList<Estate>();
+	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 	private double limit;
 	
 	public User(String username, String password) {

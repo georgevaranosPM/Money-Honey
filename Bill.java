@@ -7,6 +7,6 @@ public class Bill extends Expense{
 	public Bill(String ex_tag, double ex_amount) {
 		super(ex_tag, ex_amount);
 		
-		default_Bills.add(" ");
+		//default_Bills.add(" ");
 	}
 }
