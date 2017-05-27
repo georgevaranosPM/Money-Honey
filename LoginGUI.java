@@ -35,7 +35,7 @@ public class LoginGUI extends JFrame{
 		panel.add(textField_USERNAME);
 		textField_USERNAME.setColumns(10);
 		
-		JLabel lblUsername = new JLabel("ΟΝΟΜΑ ΧΡΗΣΤΗ:");
+		JLabel lblUsername = new JLabel("Όνομα Χρήστη");
 		lblUsername.setBounds(41, 66, 109, 16);
 		lblUsername.setForeground(Color.WHITE);
 		panel.add(lblUsername);
@@ -45,17 +45,17 @@ public class LoginGUI extends JFrame{
 		panel.add(textField_PASSWORD);
 		textField_PASSWORD.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("ΚΩΔΙΚΟΣ:");
+		JLabel lblPassword = new JLabel("Κωδικός");
 		lblPassword.setBounds(88, 104, 73, 16);
 		lblPassword.setForeground(Color.WHITE);
 		panel.add(lblPassword);
 		
-		JLabel lblUserLogin = new JLabel("ΕΙΣΟΔΟΣ ΧΡΗΣΤΗ");
+		JLabel lblUserLogin = new JLabel("Είσοδος Χρήστη");
 		lblUserLogin.setBounds(6, 6, 144, 16);
 		lblUserLogin.setForeground(Color.PINK);
 		panel.add(lblUserLogin);
 		
-		JButton btnLogin = new JButton("ΕΙΣΟΔΟΣ");
+		JButton btnLogin = new JButton("Είσοδος");
 		btnLogin.setBounds(177, 153, 84, 29);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,12 +73,12 @@ public class LoginGUI extends JFrame{
 		lblMoneyHoney.setForeground(Color.YELLOW);
 		panel.add(lblMoneyHoney);
 		
-		JLabel lblDontHaveAn = new JLabel("Δεν έχεις λογαριασμό? ");
+		JLabel lblDontHaveAn = new JLabel("Δεν έχετε λογαριασμό;");
 		lblDontHaveAn.setBounds(56, 219, 149, 16);
 		lblDontHaveAn.setForeground(Color.WHITE);
 		panel.add(lblDontHaveAn);
 		
-		JButton btnRegisterHere = new JButton("ΕΓΓΡΑΦΗ ΕΔΩ");
+		JButton btnRegisterHere = new JButton("Εγγραφείτε!");
 		btnRegisterHere.setBounds(213, 214, 147, 29);
 		btnRegisterHere.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,10 +86,12 @@ public class LoginGUI extends JFrame{
 				panel.setVisible(false);
 			}
 		});
-		btnRegisterHere.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 13));
-		btnRegisterHere.setForeground(Color.DARK_GRAY);
-		btnRegisterHere.setBackground(Color.DARK_GRAY);
+		
 		panel.add(btnRegisterHere);
+		
+		this.setVisible(true);
+		this.setSize(540, 360);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	}
+}
 
