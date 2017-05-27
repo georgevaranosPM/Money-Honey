@@ -7,7 +7,7 @@ public class Main {
 		User aUser = new User("patakos","ne2cooja" );
 		aUser.add_Income(inc1);
 		
-		new MainGUI(aUser);
+		new LoginGUI(); 
 
 	}
 
