@@ -142,7 +142,7 @@ public class MainGUI extends JFrame{
 		editProfBtn.setBounds(427, 1, 107, 29);
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				////new editGUI(aUser);
+				new editGUI(aUser);
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
@@ -175,5 +175,6 @@ public class MainGUI extends JFrame{
 		
 		this.setVisible(true);
 		this.setSize(540, 360);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 }

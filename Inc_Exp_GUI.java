@@ -51,9 +51,9 @@ public class Inc_Exp_GUI extends JFrame {
 		contentPane.add(mainPanel, "name_444500472500205");
 		mainPanel.setLayout(null);
 		
-		JLabel Submit_label = new JLabel("\u039A\u03B1\u03C4\u03B1\u03C7\u03C9\u03C1\u03B7\u03C3\u03B7");
+		JLabel Submit_label = new JLabel("Καταχώρηση");
 		Submit_label.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		Submit_label.setBounds(142, 41, 142, 31);
+		Submit_label.setBounds(148, 41, 142, 31);
 		mainPanel.add(Submit_label);
 		
 		JButton IncButton = new JButton("\u0395\u03A3\u039F\u0394\u0391");
@@ -84,7 +84,7 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		IncTagField = new JTextField();
 		IncTagField.setBounds(144, 8, 116, 22);
-		IncTagField.setText("(\u03C0\u03C7 \u03BC\u03B9\u03C3\u03B8\u03CC\u03C2)");
+		IncTagField.setText("(π.χ. μισθός)");
 		IncPanel.add(IncTagField);
 		IncTagField.setColumns(10);
 		
@@ -100,13 +100,13 @@ public class Inc_Exp_GUI extends JFrame {
 		IncAmountField.setColumns(10);
 		
 		JCheckBox TaxedcheckBox = new JCheckBox("\u03A6\u03BF\u03C1\u03BF\u03BB\u03BF\u03B3\u03B5\u03AF\u03C4\u03B1\u03B9");
-		TaxedcheckBox.setBounds(26, 114, 103, 25);
+		TaxedcheckBox.setBounds(4, 114, 120, 25);
 		TaxedcheckBox.setSelected(true);
 		
 		IncPanel.add(TaxedcheckBox);
 		
 		JCheckBox ConstantcheckBox = new JCheckBox("\u03A3\u03C4\u03B1\u03B8\u03B5\u03C1\u03CC");
-		ConstantcheckBox.setBounds(185, 114, 75, 25);
+		ConstantcheckBox.setBounds(185, 114, 100, 25);
 		IncPanel.add(ConstantcheckBox);
 		
 		//ActionListener gia to TaxedcheckBox
@@ -134,7 +134,7 @@ public class Inc_Exp_GUI extends JFrame {
 		});;
 		
 		JButton AddIncButton = new JButton("\u03A0\u03C1\u03BF\u03C3\u03B8\u03AE\u03BA\u03B7");
-		AddIncButton.setBounds(215, 180, 89, 25);
+		AddIncButton.setBounds(215, 180, 100, 25);
 		IncPanel.add(AddIncButton);
 		//ActionListener gia th kataxwrhsh esodou
 		AddIncButton.addActionListener(new ActionListener(){
@@ -162,7 +162,7 @@ public class Inc_Exp_GUI extends JFrame {
 			
 		});
 		
-		JButton IncbackButton = new JButton("Back");
+		JButton IncbackButton = new JButton("Πίσω");
 		IncbackButton.setBounds(97, 180, 69, 25);
 		IncPanel.add(IncbackButton);
 		
@@ -216,12 +216,12 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		String[] kindofExpenses = {"Consumable", "Bill", "Tax"};
 		JComboBox comboBox = new JComboBox(kindofExpenses);
-		comboBox.setBounds(24, 51, 97, 22);
+		comboBox.setBounds(24, 51, 130, 22);
 		
 		ExpPanel.add(comboBox);
 		
 		JButton AddExpButton = new JButton("\u03A0\u03C1\u03BF\u03C3\u03B8\u03AE\u03BA\u03B7");
-		AddExpButton.setBounds(297, 216, 89, 25);
+		AddExpButton.setBounds(297, 216, 100, 25);
 		ExpPanel.add(AddExpButton);
 		//ActionListener gia th kataxwrhsh eksodou
 		AddExpButton.addActionListener(new ActionListener(){
@@ -251,7 +251,7 @@ public class Inc_Exp_GUI extends JFrame {
 			
 		}});
 		
-		JButton ExpBackButton = new JButton("Back");
+		JButton ExpBackButton = new JButton("Πίσω");
 		ExpBackButton.setBounds(24, 216, 97, 25);
 		ExpPanel.add(ExpBackButton);
 		
