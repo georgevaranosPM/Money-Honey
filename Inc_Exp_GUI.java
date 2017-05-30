@@ -34,7 +34,6 @@ public class Inc_Exp_GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public Inc_Exp_GUI(User logginUser) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -44,7 +43,6 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		
 		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(Color.LIGHT_GRAY);
@@ -225,8 +223,6 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpPanel.add(AddExpButton);
 		//ActionListener gia th kataxwrhsh eksodou
 		AddExpButton.addActionListener(new ActionListener(){
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				String selectedKind = (String) comboBox.getSelectedItem();
 				double amount;

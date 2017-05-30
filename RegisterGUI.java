@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegisterGUI extends JFrame {
 	private JTextField textField;
@@ -13,6 +15,7 @@ public class RegisterGUI extends JFrame {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
+	User newUser;
 	public RegisterGUI() {
 		
 		JPanel panel = new JPanel();
@@ -79,13 +82,23 @@ public class RegisterGUI extends JFrame {
 		label_7.setBounds(128, 255, 62, 16);
 		panel.add(label_7);
 		
-		JButton button = new JButton("Προσθήκη");
-		button.setBounds(212, 222, 117, 29);
-		panel.add(button);
+		JButton add_Estate_Btn = new JButton("Προσθήκη");
+		add_Estate_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new add_EstateGUI();
+			}
+		});
+		add_Estate_Btn.setBounds(212, 222, 117, 29);
+		panel.add(add_Estate_Btn);
 		
-		JButton button_1 = new JButton("Προσθήκη");
-		button_1.setBounds(212, 250, 117, 29);
-		panel.add(button_1);
+		JButton add_Vehicle_Btn = new JButton("Προσθήκη");
+		add_Vehicle_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new add_VehicleGUI();
+			}
+		});
+		add_Vehicle_Btn.setBounds(212, 250, 117, 29);
+		panel.add(add_Vehicle_Btn);
 		
 		JLabel label_8 = new JLabel("Όριο Εξόδων");
 		label_8.setBounds(100, 312, 90, 16);
@@ -96,13 +109,30 @@ public class RegisterGUI extends JFrame {
 		panel.add(textField_5);
 		textField_5.setColumns(10);
 		
-		JButton button_2 = new JButton("ΟΛΟΚΛΗΡΩΣΗ");
-		button_2.setBounds(417, 343, 117, 29);
-		panel.add(button_2);
+		JButton end_Btn = new JButton("Ολοκλήρωση");
+		end_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		end_Btn.setBounds(417, 343, 117, 29);
+		panel.add(end_Btn);
+		
+		JButton button = new JButton("Πίσω");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				close_GUI();
+			}
+		});
+		button.setBounds(6, 343, 117, 29);
+		panel.add(button);
 		
 		this.setVisible(true);
 		this.setSize(540, 400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-
+	
+	protected void close_GUI() {
+		this.dispose();
+	}
 }

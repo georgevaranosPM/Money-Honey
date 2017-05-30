@@ -4,8 +4,6 @@ public class Estate {
 	private String address;
 	private int square_meters;
 	
-	
-	
 	public Estate(String address, int square_meters) {
 		super();
 		this.address = address;

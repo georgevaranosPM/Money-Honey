@@ -10,6 +10,7 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFormattedTextField;
 
 public class editGUI extends JFrame{
 	private JTextField username_Field;
@@ -110,13 +111,13 @@ public class editGUI extends JFrame{
 		limit_Field.setEditable(false);
 		
 		JComboBox estates_Field = new JComboBox();
-		estates_Field.setModel(new DefaultComboBoxModel(new String[] {"spiti 1", "spiti 2", "Προσθήκη..."}));
+		estates_Field.setModel(new DefaultComboBoxModel(new String[] {"spiti 1", "spiti 2"}));
 		estates_Field.setSelectedIndex(-1);
 		estates_Field.setBounds(150, 224, 130, 27);
 		getContentPane().add(estates_Field);
 		
 		JComboBox vehicles_Field = new JComboBox();
-		vehicles_Field.setModel(new DefaultComboBoxModel(new String[] {"karo 1", "karo 2", "Προσθήκη..."}));
+		vehicles_Field.setModel(new DefaultComboBoxModel(new String[] {"karo 1", "karo 2"}));
 		vehicles_Field.setSelectedIndex(-1);
 		vehicles_Field.setBounds(150, 189, 130, 27);
 		getContentPane().add(vehicles_Field);
@@ -157,9 +158,27 @@ public class editGUI extends JFrame{
 		edit_User_Btn.setBounds(350, 205, 117, 29);
 		getContentPane().add(edit_User_Btn);
 		
+		JButton add_Veh_Btn = new JButton("+");
+		add_Veh_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new add_VehicleGUI();
+			}
+		});
+		add_Veh_Btn.setBounds(290, 192, 20, 20);
+		getContentPane().add(add_Veh_Btn);
+		
+		JButton add_Estate_Btn = new JButton("+");
+		add_Estate_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new add_EstateGUI();
+			}
+		});
+		add_Estate_Btn.setBounds(290, 227, 20, 20);
+		getContentPane().add(add_Estate_Btn);
+		
 	}
 
 	protected void close_GUI() {
-		this.setVisible(false);
+		this.dispose();
 	}
 }

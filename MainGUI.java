@@ -9,6 +9,9 @@ import javax.swing.*;
 
 public class MainGUI extends JFrame{
 	
+	private Date from_Date;
+	private Date to_Date;
+	
 	public MainGUI(User aUser) {
 		getContentPane().setLayout(null);
 		
@@ -37,6 +40,7 @@ public class MainGUI extends JFrame{
 		
 		//////Lista e3odwn///////
 		JList<String> Exp_List = new JList<String>();
+		Exp_List.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Exp_List.setModel(new AbstractListModel() {
 			String[] Exp_Values = new String[] {"Έξοδο α", "Έξοδο β"};
 			public int getSize() {
@@ -62,21 +66,31 @@ public class MainGUI extends JFrame{
 		mainPanel.add(to_Date_Label);
 		
 		JSpinner from_Date_Select = new JSpinner();
-		SpinnerDateModel date_Select_Model = new SpinnerDateModel();
+		SpinnerDateModel from_date_Select_Model = new SpinnerDateModel();
 		from_Date_Select.setBounds(45, 17, 105, 26);
-		date_Select_Model.setCalendarField(Calendar.DAY_OF_MONTH);
-		from_Date_Select.setModel(date_Select_Model);
+		from_date_Select_Model.setCalendarField(Calendar.DAY_OF_MONTH);
+		from_Date_Select.setModel(from_date_Select_Model);
 		from_Date_Select.setEditor(new JSpinner.DateEditor(from_Date_Select,"dd/MM/yyyy"));
 		mainPanel.add(from_Date_Select);
 		
 		JSpinner to_Date_Select = new JSpinner();
+		SpinnerDateModel to_date_Select_Model = new SpinnerDateModel();
 		to_Date_Select.setBounds(198, 17, 105, 26);
-		date_Select_Model.setCalendarField(Calendar.DAY_OF_MONTH);
-		to_Date_Select.setModel(date_Select_Model);
+		to_date_Select_Model.setCalendarField(Calendar.DAY_OF_MONTH);
+		to_Date_Select.setModel(to_date_Select_Model);
 		to_Date_Select.setEditor(new JSpinner.DateEditor(to_Date_Select,"dd/MM/yyyy"));
 		mainPanel.add(to_Date_Select);
 		
 		JButton update_Btn = new JButton("Προβολή");
+		update_Btn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				from_Date = (Date) from_Date_Select.getValue();
+				to_Date = (Date) to_Date_Select.getValue();
+				if(from_Date.after(to_Date)) {
+					JOptionPane.showMessageDialog(null, "Μη έγκυρη μορφή περιόδου");
+				}
+			}
+		});
 		update_Btn.setBounds(91, 50, 117, 29);
 		mainPanel.add(update_Btn);
 		
@@ -92,6 +106,9 @@ public class MainGUI extends JFrame{
 			editBtn.setBounds(4, 76, 115, 29);
 			editBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					if(!Exp_List.isSelectionEmpty()) {
+						new Inc_Exp_GUI(aUser);
+					}
 				}
 			});
 			
@@ -101,6 +118,7 @@ public class MainGUI extends JFrame{
 			deleteBtn.setBounds(5, 120, 110, 29);
 			deleteBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
 				}
 			});
 			
