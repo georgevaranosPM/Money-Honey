@@ -128,7 +128,6 @@ public class RegisterGUI extends JFrame {
 		panel.add(button);
 		
 		this.setVisible(true);
-		this.setSize(540, 400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	

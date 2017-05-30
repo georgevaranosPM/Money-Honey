@@ -1,6 +1,10 @@
 import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionEvent;
@@ -9,10 +13,15 @@ import javax.swing.*;
 
 public class MainGUI extends JFrame{
 	
+<<<<<<< HEAD
 	private Date from_Date;
 	private Date to_Date;
 	
 	public MainGUI(User aUser) {
+=======
+	public MainGUI(ArrayList<User>Users,int pos) {
+		User aUser=Users.get(pos);
+>>>>>>> e8a45ab6f1c55579d65d64aa288bac4f2fd1195c
 		getContentPane().setLayout(null);
 		
 		//////Main Panel//////
@@ -160,7 +169,7 @@ public class MainGUI extends JFrame{
 		editProfBtn.setBounds(427, 1, 107, 29);
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new editGUI(aUser);
+				new editGUI(Users,pos);
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
@@ -169,7 +178,9 @@ public class MainGUI extends JFrame{
 		logOutBtn.setBounds(408, 30, 126, 29);
 		logOutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//new LogInGUI();
+
+				LoginGUI.SaveStatus(Users);
+				new LoginGUI();
 			}
 		});
 		mainNorthPanel.add(logOutBtn);

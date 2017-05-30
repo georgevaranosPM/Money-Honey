@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public class Income {
+public class Income implements Serializable {
 
 	private String in_tag;
 	private double in_amount;

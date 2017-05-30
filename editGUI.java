@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -14,11 +15,11 @@ import javax.swing.JFormattedTextField;
 
 public class editGUI extends JFrame{
 	private JTextField username_Field;
-	private JPasswordField password_Field;
+	private JTextField password_Field;
 	private JTextField name_Field;
 	private JTextField limit_Field;
 	
-	public editGUI(User aUser) {
+	public editGUI(ArrayList<User> Users, int pos ) {
 		
 		this.setVisible(true);
 		this.setSize(540, 360);
@@ -49,9 +50,9 @@ public class editGUI extends JFrame{
 		username_Field.setBounds(150, 57, 130, 26);
 		getContentPane().add(username_Field);
 		username_Field.setColumns(10);
-		username_Field.setText(aUser.getUsername());
+		username_Field.setText(Users.get(pos).getUsername());
 		
-		password_Field = new JPasswordField();
+		password_Field = new JTextField();
 		password_Field.setEditable(false);
 		password_Field.setBounds(150, 92, 130, 26);
 		getContentPane().add(password_Field);
@@ -64,6 +65,10 @@ public class editGUI extends JFrame{
 				password_Field.setEditable(false);
 				edit_Profile_Btn.setVisible(true);
 				save_Profile_Btn.setVisible(false);
+				Users.get(pos).setUsername(username_Field.getText());
+				Users.get(pos).setPassword(password_Field.getText());
+			
+				
 			}
 		});
 		save_Profile_Btn.setBounds(350, 74, 117, 29);
@@ -125,7 +130,9 @@ public class editGUI extends JFrame{
 		JButton end_Btn = new JButton("Τέλος");
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LoginGUI.SaveStatus(Users);
 				close_GUI();
+				new MainGUI(Users,pos);
 			}
 		});
 		end_Btn.setBounds(417, 303, 117, 29);

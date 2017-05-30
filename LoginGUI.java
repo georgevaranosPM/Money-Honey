@@ -7,20 +7,54 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
-public class LoginGUI extends JFrame{
+ public final  class LoginGUI extends JFrame{
 	private JTextField textField_USERNAME;
 	private JTextField textField_PASSWORD;
-	
+	private ArrayList<User> Users = new ArrayList<User>();
 	public LoginGUI() {
+		
+		try{
+			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			ArrayList<User> list = (ArrayList<User>)in.readObject();
+			in.close();
+			fileIn.close();
+			Users.addAll(list);
+
+		
+		}
+		catch(IOException exc)
+		{
+			exc.printStackTrace();
+		}
+		catch(ClassNotFoundException exc)
+		{
+			exc.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		setBackground(Color.DARK_GRAY);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -61,10 +95,13 @@ public class LoginGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				String UsernameText = textField_USERNAME.getText();
 				String PasswordText = textField_PASSWORD.getText();
-				panel.setVisible(false);
-				new MainGUI(new User (UsernameText,PasswordText)); 
-			}
-		});
+				for (int i=0; i<Users.size(); i++ ){
+					if (UsernameText.equals(Users.get(i).getUsername())&& PasswordText.equals(Users.get(i).getPassword()))
+				       {	new MainGUI(Users,i);
+				       	disposeGUI();break;}
+					else JOptionPane.showMessageDialog(panel,
+						    "User "+UsernameText+" DOESN'T EVEN EXIST!");}}
+			});
 		panel.add(btnLogin);
 		
 		JLabel lblMoneyHoney = new JLabel("MONEY HONEY");
@@ -83,7 +120,7 @@ public class LoginGUI extends JFrame{
 		btnRegisterHere.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new RegisterGUI();
-				panel.setVisible(false);
+				disposeGUI();
 			}
 		});
 		
@@ -93,5 +130,28 @@ public class LoginGUI extends JFrame{
 		this.setSize(540, 360);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-}
+
+	public  void disposeGUI(){
+		this.dispose();
+	}
+	public  static void SaveStatus(ArrayList<User> Users){
+
+		try{
+			
+			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(Users);
+			out.close();
+			fileOut.close();
+			
+			System.out.println("Serialization succeded!");
+		}
+		catch(IOException exc)
+		{
+			exc.printStackTrace();
+		}
+	}
+		
+	}
+
 
