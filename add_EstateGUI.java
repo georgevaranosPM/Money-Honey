@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class add_EstateGUI extends JFrame{
@@ -17,17 +18,22 @@ public class add_EstateGUI extends JFrame{
 		
 		this.setVisible(true);
 		this.setSize(540,  360);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(new Color(75, 75, 100));
 		
 		JLabel title_Lbl = new JLabel("Προσθήκη Ακινήτου");
 		title_Lbl.setBounds(6, 6, 140, 16);
+		title_Lbl.setForeground(new Color(230, 255, 255));
 		getContentPane().add(title_Lbl);
 		
 		JLabel address_Lbl = new JLabel("Οδός");
+		address_Lbl.setForeground(new Color(230, 255, 255));
 		address_Lbl.setBounds(111, 91, 35, 16);
 		getContentPane().add(address_Lbl);
 		
 		JLabel sq_m_Lbl = new JLabel("Τετραγωνικά Μέτρα");
+		sq_m_Lbl.setForeground(new Color(230, 255, 255));
 		sq_m_Lbl.setBounds(20, 166, 135, 16);
 		getContentPane().add(sq_m_Lbl);
 		
@@ -41,24 +47,26 @@ public class add_EstateGUI extends JFrame{
 		getContentPane().add(sq_m_Field);
 		sq_m_Field.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ολοκλήρωση");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton end_Btn = new JButton("Ολοκλήρωση");
+		end_Btn.setBackground(new Color(240, 110, 118));
+		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//aUser.estates.add();
 				close_GUI();
 			}
 		});
-		btnNewButton.setBounds(417, 303, 117, 29);
-		getContentPane().add(btnNewButton);
+		end_Btn.setBounds(417, 303, 117, 29);
+		getContentPane().add(end_Btn);
 		
-		JButton button = new JButton("Πίσω");
-		button.addActionListener(new ActionListener() {
+		JButton back_Button = new JButton("Πίσω");
+		back_Button.setBackground(new Color(240, 110, 118));
+		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
 			}
 		});
-		button.setBounds(6, 303, 117, 29);
-		getContentPane().add(button);
+		back_Button.setBounds(6, 303, 117, 29);
+		getContentPane().add(back_Button);
 	}
 	
 	protected void close_GUI() {

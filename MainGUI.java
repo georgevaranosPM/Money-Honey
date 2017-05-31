@@ -8,26 +8,29 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.SystemColor;
 
 public class MainGUI extends JFrame{
 	
-<<<<<<< HEAD
 	private Date from_Date;
 	private Date to_Date;
 	
-	public MainGUI(User aUser) {
-=======
 	public MainGUI(ArrayList<User>Users,int pos) {
 		User aUser=Users.get(pos);
->>>>>>> e8a45ab6f1c55579d65d64aa288bac4f2fd1195c
 		getContentPane().setLayout(null);
 		
 		//////Main Panel//////
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBounds(110, 58, 309, 241);
 		getContentPane().add(mainPanel);
+		getContentPane().setBackground(new Color(75, 75, 100));
 		mainPanel.setLayout(null);
 		
 		//////Lista esodwn///////
@@ -64,14 +67,17 @@ public class MainGUI extends JFrame{
 		
 		JLabel show_Label = new JLabel("Εμφάνιση Καταχωρήσεων");
 		show_Label.setBounds(64, 0, 179, 16);
+		show_Label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(show_Label);
 		
-		JLabel from_Date__Label = new JLabel("Από");
-		from_Date__Label.setBounds(6, 22, 61, 16);
-		mainPanel.add(from_Date__Label);
+		JLabel from_Date_Label = new JLabel("Από");
+		from_Date_Label.setBounds(6, 22, 61, 16);
+		from_Date_Label.setForeground(new Color(230, 255, 255));
+		mainPanel.add(from_Date_Label);
 		
 		JLabel to_Date_Label = new JLabel("Μέχρι");
 		to_Date_Label.setBounds(159, 22, 61, 16);
+		to_Date_Label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(to_Date_Label);
 		
 		JSpinner from_Date_Select = new JSpinner();
@@ -102,6 +108,8 @@ public class MainGUI extends JFrame{
 		});
 		update_Btn.setBounds(91, 50, 117, 29);
 		mainPanel.add(update_Btn);
+		update_Btn.setBackground(new Color(240, 110, 118));
+		mainPanel.setBackground(new Color(75, 75, 100));
 		
 			
 			///////Right Panel////////
@@ -113,6 +121,7 @@ public class MainGUI extends JFrame{
 			
 			JButton editBtn = new JButton("Επεξεργασία");
 			editBtn.setBounds(4, 76, 115, 29);
+			editBtn.setBackground(new Color(240, 110, 118));
 			editBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if(!Exp_List.isSelectionEmpty()) {
@@ -125,6 +134,7 @@ public class MainGUI extends JFrame{
 			
 			JButton deleteBtn = new JButton("Διαγραφή");
 			deleteBtn.setBounds(5, 120, 110, 29);
+			deleteBtn.setBackground(new Color(240, 110, 118));
 			deleteBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -132,6 +142,7 @@ public class MainGUI extends JFrame{
 			});
 			
 			mainRightPanel.add(deleteBtn);
+			mainRightPanel.setBackground(new Color(75, 75, 100));
 
 		
 		///////South Panel////////
@@ -143,12 +154,14 @@ public class MainGUI extends JFrame{
 		JButton graphsBtn = new JButton("Εμφάνιση Γραφημάτων");
 		graphsBtn.setSize(190, 29);
 		graphsBtn.setLocation(168, 6);
+		graphsBtn.setBackground(new Color(240, 110, 118));
 		graphsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				////Gui Grafhmatwn
 			}
 		});
 		mainSouthPanel.add(graphsBtn);
+		mainSouthPanel.setBackground(new Color(75, 75, 100));
 		
 		
 		//////North Panel//////
@@ -159,31 +172,38 @@ public class MainGUI extends JFrame{
 		
 		JLabel userLabel = new JLabel(aUser.getUsername());
 		userLabel.setBounds(32, 14, 100, 16);
+		userLabel.setFont(getFont());
+		userLabel.setForeground(new Color(230, 255, 255));
 		mainNorthPanel.add(userLabel);
 		
 		JLabel dateLabel = new JLabel(DateTimeFormatter.ofPattern("dd/MM/yyy").format(LocalDate.now()));
 		dateLabel.setBounds(218, 14, 78, 16);
+		dateLabel.setForeground(new Color(230, 255, 255));
 		mainNorthPanel.add(dateLabel);
 		
 		JButton editProfBtn = new JButton("Ρυθμίσεις");
 		editProfBtn.setBounds(427, 1, 107, 29);
+		editProfBtn.setBackground(new Color(240, 110, 118));
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new editGUI(Users,pos);
+				close_GUI();
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
 		
 		JButton logOutBtn = new JButton("Αποσύνδεση");
 		logOutBtn.setBounds(408, 30, 126, 29);
+		logOutBtn.setBackground(new Color(240, 110, 118));
 		logOutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				close_GUI();
 				LoginGUI.SaveStatus(Users);
 				new LoginGUI();
 			}
 		});
 		mainNorthPanel.add(logOutBtn);
+		mainNorthPanel.setBackground(new Color(75, 75, 100));
 		
 		
 		///////Left Panel////////
@@ -193,8 +213,12 @@ public class MainGUI extends JFrame{
 		flowLayout.setVgap(90);
 		flowLayout.setHgap(0);
 		getContentPane().add(mainLeftPanel);
+		mainLeftPanel.setBackground(new Color(75, 75, 100));
 		
-		JButton sbmtBtn = new JButton("Προσθήκη");
+		ImageIcon image = new ImageIcon("file:///Users/GeorgeVaranos/Money-Honey/add_Btn.png");
+		
+		JButton sbmtBtn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Documents/workspace/Money Honey/bin/add_Btn.png"));
+		sbmtBtn.setBackground(new Color(240, 110, 118));
 		sbmtBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Inc_Exp_GUI(null);
@@ -205,5 +229,9 @@ public class MainGUI extends JFrame{
 		this.setVisible(true);
 		this.setSize(540, 360);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	protected void close_GUI() {
+		this.dispose();
 	}
 }

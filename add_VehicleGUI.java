@@ -7,31 +7,38 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 public class add_VehicleGUI extends JFrame{
 	private JTextField car_Id_Field;
 	private JTextField cc_Field;
+	
 	public add_VehicleGUI() {
-		
 		
 		this.setVisible(true);
 		this.setSize(540,  360);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
+		getContentPane().setBackground(new Color(75, 75, 100));
 		
 		JLabel title_Lbl = new JLabel("Προσθήκη Οχήματος");
+		title_Lbl.setForeground(new Color(230, 255, 255));
 		title_Lbl.setBounds(6, 6, 140, 16);
 		getContentPane().add(title_Lbl);
 		
 		JLabel car_Id_Lbl = new JLabel("Πινακίδα");
+		car_Id_Lbl.setForeground(new Color(230, 255, 255));
 		car_Id_Lbl.setBounds(85, 75, 61, 16);
 		getContentPane().add(car_Id_Lbl);
 		
 		JLabel year_Lbl = new JLabel("Ημ. Κυκλοφορίας");
+		year_Lbl.setForeground(new Color(230, 255, 255));
 		year_Lbl.setBounds(31, 145, 115, 16);
 		getContentPane().add(year_Lbl);
 		
 		JLabel cc_Lbl = new JLabel("Κυβικά");
+		cc_Lbl.setForeground(new Color(230, 255, 255));
 		cc_Lbl.setBounds(96, 215, 50, 16);
 		getContentPane().add(cc_Lbl);
 		
@@ -53,24 +60,26 @@ public class add_VehicleGUI extends JFrame{
 		getContentPane().add(cc_Field);
 		cc_Field.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Ολοκλήρωση");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton end_Btn = new JButton("Ολοκλήρωση");
+		end_Btn.setBackground(new Color(240, 110, 118));
+		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//aUser.vehicles.add();
 				close_GUI();
 			}
 		});
-		btnNewButton.setBounds(417, 303, 117, 29);
-		getContentPane().add(btnNewButton);
+		end_Btn.setBounds(417, 303, 117, 29);
+		getContentPane().add(end_Btn);
 		
-		JButton button = new JButton("Πίσω");
-		button.addActionListener(new ActionListener() {
+		JButton back_Button = new JButton("Πίσω");
+		back_Button.setBackground(new Color(240, 110, 118));
+		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
 			}
 		});
-		button.setBounds(6, 303, 117, 29);
-		getContentPane().add(button);
+		back_Button.setBounds(6, 303, 117, 29);
+		getContentPane().add(back_Button);
 	}
 	
 	protected void close_GUI() {
