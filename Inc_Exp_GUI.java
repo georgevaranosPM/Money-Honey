@@ -52,20 +52,20 @@ public class Inc_Exp_GUI extends JFrame {
 		contentPane.add(mainPanel, "name_444500472500205");
 		mainPanel.setLayout(null);
 		
-		JLabel Submit_label = new JLabel("Καταχώρηση");
+		JLabel Submit_label = new JLabel("Submit");
 		Submit_label.setHorizontalAlignment(SwingConstants.CENTER);
-		Submit_label.setBounds(6, 6, 90, 20);
+		Submit_label.setBounds(0, 0, 90, 20);
 		Submit_label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(Submit_label);
 		
-		JButton IncButton = new JButton("Έσοδα");
+		JButton IncButton = new JButton("Incomes");
 		IncButton.setBackground(new Color(240, 110, 118));
 		IncButton.setBounds(91, 126, 97, 25);
 		mainPanel.add(IncButton);
 		
 		
 		
-		JButton ExpButton = new JButton("Έξοδα");
+		JButton ExpButton = new JButton("Expenses");
 		ExpButton.setBackground(new Color(240, 110, 118));
 		ExpButton.setBounds(237, 126, 97, 25);
 		mainPanel.add(ExpButton);
@@ -77,19 +77,19 @@ public class Inc_Exp_GUI extends JFrame {
 		IncPanel.setLayout(null);
 		
 		
-		JLabel IncTag_label = new JLabel("Eίδος Εσόδου");
-		IncTag_label.setBounds(88, 60, 80, 22);
+		JLabel IncTag_label = new JLabel("Type of Income");
+		IncTag_label.setBounds(71, 60, 90, 22);
 		IncTag_label.setForeground(new Color(230, 255, 255));
 		IncPanel.add(IncTag_label);
 		
 		IncTagField = new JTextField();
 		IncTagField.setBounds(193, 59, 116, 25);
-		IncTagField.setText("(π.χ. μισθός)");
+		IncTagField.setText("(i.e. wage)");
 		IncPanel.add(IncTagField);
 		IncTagField.setColumns(10);
 		
-		JLabel IncAmount_label = new JLabel("Ποσό");
-		IncAmount_label.setBounds(133, 109, 35, 22);
+		JLabel IncAmount_label = new JLabel("Sum");
+		IncAmount_label.setBounds(71, 109, 35, 22);
 		IncAmount_label.setForeground(new Color(230, 255, 255));
 		IncPanel.add(IncAmount_label);
 		
@@ -98,13 +98,13 @@ public class Inc_Exp_GUI extends JFrame {
 		IncPanel.add(IncAmountField);
 		IncAmountField.setColumns(10);
 		
-		JCheckBox TaxedcheckBox = new JCheckBox("Φορολογείται");
+		JCheckBox TaxedcheckBox = new JCheckBox("Taxed");
 		TaxedcheckBox.setForeground(new Color(230, 255, 255));
 		TaxedcheckBox.setBounds(71, 180, 120, 25);
 		TaxedcheckBox.setSelected(true);
 		IncPanel.add(TaxedcheckBox);
 		
-		JCheckBox ConstantcheckBox = new JCheckBox("Σταθερό (ανά μήνα)");
+		JCheckBox ConstantcheckBox = new JCheckBox("Monthly Stable");
 		ConstantcheckBox.setForeground(new Color(230, 255, 255));
 		ConstantcheckBox.setBounds(250, 180, 140, 25);
 		IncPanel.add(ConstantcheckBox);
@@ -133,7 +133,7 @@ public class Inc_Exp_GUI extends JFrame {
 			
 		});;
 		
-		JButton AddIncButton = new JButton("Προσθήκη");
+		JButton AddIncButton = new JButton("Add");
 		AddIncButton.setBackground(new Color(240, 110, 118));
 		AddIncButton.setBounds(334, 237, 100, 25);
 		IncPanel.add(AddIncButton);
@@ -163,7 +163,7 @@ public class Inc_Exp_GUI extends JFrame {
 			
 		});
 		
-		JButton IncbackButton = new JButton("Πίσω");
+		JButton IncbackButton = new JButton("Back");
 		IncbackButton.setBackground(new Color(240, 110, 118));
 		IncbackButton.setBounds(4, 237, 69, 25);
 		IncPanel.add(IncbackButton);
@@ -196,14 +196,14 @@ public class Inc_Exp_GUI extends JFrame {
 		contentPane.add(ExpPanel, "name_445032262353479");
 		ExpPanel.setLayout(null);
 		
-		JLabel ExpTag_label = new JLabel("Είδος");
+		JLabel ExpTag_label = new JLabel("Type of Expense");
 		ExpTag_label.setForeground(new Color(230, 255, 255));
-		ExpTag_label.setBounds(198, 38, 35, 20);
+		ExpTag_label.setBounds(180, 38, 100, 20);
 		ExpPanel.add(ExpTag_label);
 		
-		JLabel ExpAmount_label = new JLabel("Ποσό");
+		JLabel ExpAmount_label = new JLabel("Sum");
 		ExpAmount_label.setForeground(new Color(230, 255, 255));
-		ExpAmount_label.setBounds(307, 38, 35, 20);
+		ExpAmount_label.setBounds(292, 38, 35, 20);
 		ExpPanel.add(ExpAmount_label);
 		
 		ExpTagField = new JTextField();
@@ -223,7 +223,7 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		ExpPanel.add(comboBox);
 		
-		JButton AddExpButton = new JButton("Προσθήκη");
+		JButton AddExpButton = new JButton("Add");
 		AddExpButton.setBackground(new Color(240, 110, 118));
 		AddExpButton.setBounds(334, 237, 100, 25);
 		ExpPanel.add(AddExpButton);
@@ -253,7 +253,7 @@ public class Inc_Exp_GUI extends JFrame {
 			
 		}});
 		
-		JButton ExpBackButton = new JButton("Πίσω");
+		JButton ExpBackButton = new JButton("Back");
 		ExpBackButton.setBackground(new Color(240, 110, 118));
 		ExpBackButton.setBounds(6, 237, 97, 25);
 		ExpPanel.add(ExpBackButton);

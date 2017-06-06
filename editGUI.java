@@ -29,27 +29,27 @@ public class editGUI extends JFrame{
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new Color(75, 75, 100));
 		
-		JLabel edit_Profile = new JLabel("Επεξεργασία Προφίλ");
+		JLabel edit_Profile = new JLabel("Edit Profile");
 		edit_Profile.setBounds(6, 6, 150, 16);
 		edit_Profile.setForeground(new Color(230, 255, 255));
 		getContentPane().add(edit_Profile);
 		
-		JLabel profile = new JLabel("Προφίλ");
+		JLabel profile = new JLabel("Profile");
 		profile.setBounds(16, 34, 61, 16);
 		profile.setForeground(new Color(230, 255, 255));
 		getContentPane().add(profile);
 		
-		JLabel user = new JLabel("Χρήστης");
+		JLabel user = new JLabel("User");
 		user.setBounds(16, 130, 61, 16);
 		user.setForeground(new Color(230, 255, 255));
 		getContentPane().add(user);
 		
-		JLabel username = new JLabel("Όνομα");
+		JLabel username = new JLabel("Name");
 		username.setBounds(60, 62, 61, 16);
 		username.setForeground(new Color(230, 255, 255));
 		getContentPane().add(username);
 		
-		JLabel password = new JLabel("Κωδικός");
+		JLabel password = new JLabel("Password");
 		password.setBounds(60, 97, 61, 16);
 		password.setForeground(new Color(230, 255, 255));
 		getContentPane().add(password);
@@ -66,9 +66,9 @@ public class editGUI extends JFrame{
 		password_Field.setBounds(150, 92, 130, 26);
 		getContentPane().add(password_Field);
 		
-		JButton save_Profile_Btn = new JButton("Αποθήκευση");
+		JButton save_Profile_Btn = new JButton("Save");
 		save_Profile_Btn.setBackground(new Color(240, 110, 118));
-		JButton edit_Profile_Btn = new JButton("Επεξεργασία");
+		JButton edit_Profile_Btn = new JButton("Edit");
 		edit_Profile_Btn.setBackground(new Color(240, 110, 118));
 		save_Profile_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,22 +98,22 @@ public class editGUI extends JFrame{
 		edit_Profile_Btn.setBounds(350, 74, 117, 29);
 		getContentPane().add(edit_Profile_Btn);
 		
-		JLabel name = new JLabel("Ονομ/μο");
+		JLabel name = new JLabel("Full Name");
 		name.setBounds(60, 158, 70, 16);
 		name.setForeground(new Color(230, 255, 255));
 		getContentPane().add(name);
 		
-		JLabel vehicles = new JLabel("Οχήματα");
+		JLabel vehicles = new JLabel("Vehicles");
 		vehicles.setBounds(60, 193, 61, 16);
 		vehicles.setForeground(new Color(230, 255, 255));
 		getContentPane().add(vehicles);
 		
-		JLabel estates = new JLabel("Ακίνητα");
+		JLabel estates = new JLabel("Estates");
 		estates.setBounds(60, 228, 61, 16);
 		estates.setForeground(new Color(230, 255, 255));
 		getContentPane().add(estates);
 		
-		JLabel limit = new JLabel("Όριο Εξόδων");
+		JLabel limit = new JLabel("Expenses Limit");
 		limit.setBounds(60, 263, 90, 16);
 		limit.setForeground(new Color(230, 255, 255));
 		getContentPane().add(limit);
@@ -144,7 +144,7 @@ public class editGUI extends JFrame{
 		vehicles_Field.setBounds(150, 189, 130, 27);
 		getContentPane().add(vehicles_Field);
 		
-		JButton end_Btn = new JButton("Τέλος");
+		JButton end_Btn = new JButton("Complete");
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginGUI.SaveStatus(Users);
@@ -157,9 +157,9 @@ public class editGUI extends JFrame{
 		getContentPane().add(end_Btn);
 		
 		
-		JButton save_User_Btn = new JButton("Αποθήκευση");
+		JButton save_User_Btn = new JButton("Save");
 		save_User_Btn.setBackground(new Color(240, 110, 118));
-		JButton edit_User_Btn = new JButton("Επεξεργασία");
+		JButton edit_User_Btn = new JButton("Edit");
 		edit_User_Btn.setBackground(new Color(240, 110, 118));
 		save_User_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

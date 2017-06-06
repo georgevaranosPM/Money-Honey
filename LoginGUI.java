@@ -65,8 +65,8 @@ import java.awt.Canvas;
 		panel.add(textField_USERNAME);
 		textField_USERNAME.setColumns(10);
 		
-		JLabel lblUsername = new JLabel("Όνομα Χρήστη");
-		lblUsername.setBounds(107, 110, 109, 16);
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setBounds(129, 110, 109, 16);
 		lblUsername.setForeground(new Color(230, 255, 255));
 		panel.add(lblUsername);
 		
@@ -75,14 +75,14 @@ import java.awt.Canvas;
 		panel.add(textField_PASSWORD);
 		textField_PASSWORD.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("Κωδικός");
-		lblPassword.setBounds(154, 148, 73, 16);
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(129, 148, 73, 16);
 		lblPassword.setForeground(new Color(230, 255, 255));
 		panel.add(lblPassword);
 		
-		JButton btnLogin = new JButton("Είσοδος");
+		JButton btnLogin = new JButton("Log In");
 		btnLogin.setBackground(new Color(240, 110, 118));
-		btnLogin.setBounds(243, 197, 84, 29);
+		btnLogin.setBounds(250, 197, 84, 29);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String UsernameText = textField_USERNAME.getText();
@@ -92,7 +92,7 @@ import java.awt.Canvas;
 				       {	new MainGUI(Users,i);
 				       	disposeGUI();break;}
 					else JOptionPane.showMessageDialog(panel,
-						    "User "+UsernameText+" DOESN'T EVEN EXIST!");}}
+						    "User "+UsernameText+" does not exist!");}}
 			});
 		panel.add(btnLogin);
 		
@@ -103,12 +103,12 @@ import java.awt.Canvas;
 		lblMoneyHoney.setForeground(new Color(230, 255, 255));
 		panel.add(lblMoneyHoney);
 		
-		JLabel lblDontHaveAn = new JLabel("Δεν έχετε λογαριασμό;");
-		lblDontHaveAn.setBounds(100, 293, 149, 16);
+		JLabel lblDontHaveAn = new JLabel("Don't have an account?");
+		lblDontHaveAn.setBounds(107, 294, 149, 16);
 		lblDontHaveAn.setForeground(new Color(230, 255, 255));
 		panel.add(lblDontHaveAn);
 		
-		JButton btnRegister = new JButton("Εγγραφείτε!");
+		JButton btnRegister = new JButton("Register!");
 		btnRegister.setBackground(new Color(240, 110, 118));
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {
