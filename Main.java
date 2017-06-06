@@ -18,6 +18,7 @@ public class Main {
 		try{
 			
 			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.ser");
+			
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(UsersInit);
 			out.close();
