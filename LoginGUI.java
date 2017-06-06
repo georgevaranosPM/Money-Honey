@@ -16,6 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.CardLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.Canvas;
 
  public final  class LoginGUI extends JFrame{
 	private JTextField textField_USERNAME;
@@ -55,13 +61,8 @@ import javax.swing.JTextField;
 		panel.add(textField_USERNAME);
 		textField_USERNAME.setColumns(10);
 		
-<<<<<<< HEAD
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(129, 110, 109, 16);
-=======
-		JLabel lblUsername = new JLabel("Ξ�Ξ½ΞΏΞΌΞ± Ξ§Ο�Ξ®ΟƒΟ„Ξ·");
-		lblUsername.setBounds(107, 110, 109, 16);
->>>>>>> 06db8f5a6a5c6d9c4c21a59bcd7d513a27f94b41
 		lblUsername.setForeground(new Color(230, 255, 255));
 		panel.add(lblUsername);
 		
@@ -70,21 +71,12 @@ import javax.swing.JTextField;
 		panel.add(textField_PASSWORD);
 		textField_PASSWORD.setColumns(10);
 		
-<<<<<<< HEAD
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(129, 148, 73, 16);
 		lblPassword.setForeground(new Color(230, 255, 255));
 		panel.add(lblPassword);
 		
 		JButton btnLogin = new JButton("Log In");
-=======
-		JLabel lblPassword = new JLabel("Ξ�Ο‰Ξ΄ΞΉΞΊΟ�Ο‚");
-		lblPassword.setBounds(154, 148, 73, 16);
-		lblPassword.setForeground(new Color(230, 255, 255));
-		panel.add(lblPassword);
-		
-		JButton btnLogin = new JButton("Ξ•Ξ―ΟƒΞΏΞ΄ΞΏΟ‚");
->>>>>>> 06db8f5a6a5c6d9c4c21a59bcd7d513a27f94b41
 		btnLogin.setBackground(new Color(240, 110, 118));
 		btnLogin.setBounds(250, 197, 84, 29);
 		btnLogin.addActionListener(new ActionListener() {
@@ -107,21 +99,12 @@ import javax.swing.JTextField;
 		lblMoneyHoney.setForeground(new Color(230, 255, 255));
 		panel.add(lblMoneyHoney);
 		
-<<<<<<< HEAD
 		JLabel lblDontHaveAn = new JLabel("Don't have an account?");
 		lblDontHaveAn.setBounds(107, 294, 149, 16);
 		lblDontHaveAn.setForeground(new Color(230, 255, 255));
 		panel.add(lblDontHaveAn);
 		
 		JButton btnRegister = new JButton("Register!");
-=======
-		JLabel lblDontHaveAn = new JLabel("Ξ”ΞµΞ½ Ξ­Ο‡ΞµΟ„Ξµ Ξ»ΞΏΞ³Ξ±Ο�ΞΉΞ±ΟƒΞΌΟ�;");
-		lblDontHaveAn.setBounds(100, 293, 149, 16);
-		lblDontHaveAn.setForeground(new Color(230, 255, 255));
-		panel.add(lblDontHaveAn);
-		
-		JButton btnRegister = new JButton("Ξ•Ξ³Ξ³Ο�Ξ±Ο†ΞµΞ―Ο„Ξµ!");
->>>>>>> 06db8f5a6a5c6d9c4c21a59bcd7d513a27f94b41
 		btnRegister.setBackground(new Color(240, 110, 118));
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {

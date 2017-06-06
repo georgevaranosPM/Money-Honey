@@ -33,8 +33,6 @@ public class Main {
 		
 		
 		new LoginGUI(); 
-
-		new Inc_Exp_GUI(aUser);
 	}
 
 }
