@@ -1,18 +1,6 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JTextField;
 import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,12 +8,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import java.awt.CardLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.Canvas;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
  public final  class LoginGUI extends JFrame{
 	private JTextField textField_USERNAME;
@@ -65,7 +55,7 @@ import java.awt.Canvas;
 		panel.add(textField_USERNAME);
 		textField_USERNAME.setColumns(10);
 		
-		JLabel lblUsername = new JLabel("Όνομα Χρήστη");
+		JLabel lblUsername = new JLabel("Ξ�Ξ½ΞΏΞΌΞ± Ξ§Ο�Ξ®ΟƒΟ„Ξ·");
 		lblUsername.setBounds(107, 110, 109, 16);
 		lblUsername.setForeground(new Color(230, 255, 255));
 		panel.add(lblUsername);
@@ -75,12 +65,12 @@ import java.awt.Canvas;
 		panel.add(textField_PASSWORD);
 		textField_PASSWORD.setColumns(10);
 		
-		JLabel lblPassword = new JLabel("Κωδικός");
+		JLabel lblPassword = new JLabel("Ξ�Ο‰Ξ΄ΞΉΞΊΟ�Ο‚");
 		lblPassword.setBounds(154, 148, 73, 16);
 		lblPassword.setForeground(new Color(230, 255, 255));
 		panel.add(lblPassword);
 		
-		JButton btnLogin = new JButton("Είσοδος");
+		JButton btnLogin = new JButton("Ξ•Ξ―ΟƒΞΏΞ΄ΞΏΟ‚");
 		btnLogin.setBackground(new Color(240, 110, 118));
 		btnLogin.setBounds(243, 197, 84, 29);
 		btnLogin.addActionListener(new ActionListener() {
@@ -103,12 +93,12 @@ import java.awt.Canvas;
 		lblMoneyHoney.setForeground(new Color(230, 255, 255));
 		panel.add(lblMoneyHoney);
 		
-		JLabel lblDontHaveAn = new JLabel("Δεν έχετε λογαριασμό;");
+		JLabel lblDontHaveAn = new JLabel("Ξ”ΞµΞ½ Ξ­Ο‡ΞµΟ„Ξµ Ξ»ΞΏΞ³Ξ±Ο�ΞΉΞ±ΟƒΞΌΟ�;");
 		lblDontHaveAn.setBounds(100, 293, 149, 16);
 		lblDontHaveAn.setForeground(new Color(230, 255, 255));
 		panel.add(lblDontHaveAn);
 		
-		JButton btnRegister = new JButton("Εγγραφείτε!");
+		JButton btnRegister = new JButton("Ξ•Ξ³Ξ³Ο�Ξ±Ο†ΞµΞ―Ο„Ξµ!");
 		btnRegister.setBackground(new Color(240, 110, 118));
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {
