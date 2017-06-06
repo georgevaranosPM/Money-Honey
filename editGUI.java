@@ -56,14 +56,14 @@ public class editGUI extends JFrame{
 		
 		username_Field = new JTextField();
 		username_Field.setEditable(false);
-		username_Field.setBounds(150, 57, 130, 26);
+		username_Field.setBounds(160, 57, 130, 26);
 		getContentPane().add(username_Field);
 		username_Field.setColumns(10);
 		username_Field.setText(Users.get(pos).getUsername());
 		
 		password_Field = new JTextField();
 		password_Field.setEditable(false);
-		password_Field.setBounds(150, 92, 130, 26);
+		password_Field.setBounds(160, 92, 130, 26);
 		getContentPane().add(password_Field);
 		
 		JButton save_Profile_Btn = new JButton("Save");
@@ -114,18 +114,18 @@ public class editGUI extends JFrame{
 		getContentPane().add(estates);
 		
 		JLabel limit = new JLabel("Expenses Limit");
-		limit.setBounds(60, 263, 90, 16);
+		limit.setBounds(60, 263, 100, 16);
 		limit.setForeground(new Color(230, 255, 255));
 		getContentPane().add(limit);
 		
 		name_Field = new JTextField();
-		name_Field.setBounds(150, 153, 130, 26);
+		name_Field.setBounds(160, 153, 130, 26);
 		getContentPane().add(name_Field);
 		name_Field.setColumns(10);
 		name_Field.setEditable(false);
 		
 		limit_Field = new JTextField();
-		limit_Field.setBounds(150, 258, 130, 26);
+		limit_Field.setBounds(160, 258, 130, 26);
 		getContentPane().add(limit_Field);
 		limit_Field.setColumns(10);
 		limit_Field.setEditable(false);
@@ -134,14 +134,14 @@ public class editGUI extends JFrame{
 		estates_Field.setBackground(new Color(240, 110, 118));
 		estates_Field.setModel(new DefaultComboBoxModel(new String[] {"spiti 1", "spiti 2"}));
 		estates_Field.setSelectedIndex(-1);
-		estates_Field.setBounds(150, 224, 130, 27);
+		estates_Field.setBounds(160, 223, 130, 27);
 		getContentPane().add(estates_Field);
 		
 		JComboBox vehicles_Field = new JComboBox();
 		vehicles_Field.setBackground(new Color(240, 110, 118));
 		vehicles_Field.setModel(new DefaultComboBoxModel(new String[] {"karo 1", "karo 2"}));
 		vehicles_Field.setSelectedIndex(-1);
-		vehicles_Field.setBounds(150, 189, 130, 27);
+		vehicles_Field.setBounds(160, 188, 130, 27);
 		getContentPane().add(vehicles_Field);
 		
 		JButton end_Btn = new JButton("Complete");
@@ -194,7 +194,7 @@ public class editGUI extends JFrame{
 				new add_VehicleGUI();
 			}
 		});
-		add_Veh_Btn.setBounds(285, 192, 25, 25);
+		add_Veh_Btn.setBounds(295, 190, 25, 25);
 		getContentPane().add(add_Veh_Btn);
 		
 		JButton add_Estate_Btn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Money-Honey/add.png"));
@@ -204,7 +204,7 @@ public class editGUI extends JFrame{
 				new add_EstateGUI();
 			}
 		});
-		add_Estate_Btn.setBounds(285, 222, 25, 25);
+		add_Estate_Btn.setBounds(295, 224, 25, 25);
 		getContentPane().add(add_Estate_Btn);
 		
 	}

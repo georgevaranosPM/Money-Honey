@@ -45,7 +45,6 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		
 		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBackground(new Color(75, 75, 100));
@@ -53,8 +52,8 @@ public class Inc_Exp_GUI extends JFrame {
 		mainPanel.setLayout(null);
 		
 		JLabel Submit_label = new JLabel("Submit");
-		Submit_label.setHorizontalAlignment(SwingConstants.CENTER);
-		Submit_label.setBounds(0, 0, 90, 20);
+		Submit_label.setHorizontalAlignment(SwingConstants.LEFT);
+		Submit_label.setBounds(6, 0, 50, 20);
 		Submit_label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(Submit_label);
 		
@@ -76,7 +75,7 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		
 		JLabel IncTag_label = new JLabel("Type of Income");
-		IncTag_label.setBounds(71, 60, 90, 22);
+		IncTag_label.setBounds(71, 60, 100, 22);
 		IncTag_label.setForeground(new Color(230, 255, 255));
 		IncPanel.add(IncTag_label);
 		
@@ -196,7 +195,7 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		JLabel ExpTag_label = new JLabel("Type of Expense");
 		ExpTag_label.setForeground(new Color(230, 255, 255));
-		ExpTag_label.setBounds(180, 38, 100, 20);
+		ExpTag_label.setBounds(180, 38, 110, 20);
 		ExpPanel.add(ExpTag_label);
 		
 		JLabel ExpAmount_label = new JLabel("Sum");

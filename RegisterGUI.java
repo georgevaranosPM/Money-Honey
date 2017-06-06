@@ -111,7 +111,7 @@ public class RegisterGUI extends JFrame {
 		panel.add(add_Vehicle_Btn);
 		
 		JLabel limit_Label = new JLabel("Expenses Limit");
-		limit_Label.setBounds(100, 312, 90, 16);
+		limit_Label.setBounds(94, 312, 100, 16);
 		limit_Label.setForeground(new Color(230, 255, 255));
 		panel.add(limit_Label);
 		

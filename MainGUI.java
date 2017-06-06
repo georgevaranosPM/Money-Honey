@@ -168,7 +168,6 @@ public class MainGUI extends JFrame{
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new editGUI(Users,pos);
-				close_GUI();
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
@@ -187,7 +186,7 @@ public class MainGUI extends JFrame{
 		mainNorthPanel.setBackground(new Color(75, 75, 100));
 		
 		JLabel show_Label = new JLabel("Submissions");
-		show_Label.setBounds(228, 45, 70, 16);
+		show_Label.setBounds(228, 45, 80, 16);
 		mainNorthPanel.add(show_Label);
 		show_Label.setForeground(new Color(230, 255, 255));
 		
