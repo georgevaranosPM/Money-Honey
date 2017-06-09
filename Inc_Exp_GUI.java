@@ -85,8 +85,8 @@ public class Inc_Exp_GUI extends JFrame {
 		IncPanel.add(IncTagField);
 		IncTagField.setColumns(10);
 		
-		JLabel IncAmount_label = new JLabel("Sum");
-		IncAmount_label.setBounds(71, 109, 35, 22);
+		JLabel IncAmount_label = new JLabel("Amount");
+		IncAmount_label.setBounds(71, 109, 69, 22);
 		IncAmount_label.setForeground(new Color(230, 255, 255));
 		IncPanel.add(IncAmount_label);
 		
@@ -96,13 +96,13 @@ public class Inc_Exp_GUI extends JFrame {
 		IncAmountField.setColumns(10);
 		
 		JCheckBox TaxedcheckBox = new JCheckBox("Taxed");
-		TaxedcheckBox.setForeground(new Color(230, 255, 255));
+		TaxedcheckBox.setForeground(Color.RED);
 		TaxedcheckBox.setBounds(71, 180, 120, 25);
 		TaxedcheckBox.setSelected(true);
 		IncPanel.add(TaxedcheckBox);
 		
 		JCheckBox ConstantcheckBox = new JCheckBox("Monthly Stable");
-		ConstantcheckBox.setForeground(new Color(230, 255, 255));
+		ConstantcheckBox.setForeground(Color.RED);
 		ConstantcheckBox.setBounds(250, 180, 140, 25);
 		IncPanel.add(ConstantcheckBox);
 		
@@ -198,9 +198,9 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpTag_label.setBounds(180, 38, 110, 20);
 		ExpPanel.add(ExpTag_label);
 		
-		JLabel ExpAmount_label = new JLabel("Sum");
+		JLabel ExpAmount_label = new JLabel("Amount");
 		ExpAmount_label.setForeground(new Color(230, 255, 255));
-		ExpAmount_label.setBounds(292, 38, 35, 20);
+		ExpAmount_label.setBounds(292, 38, 71, 20);
 		ExpPanel.add(ExpAmount_label);
 		
 		ExpTagField = new JTextField();

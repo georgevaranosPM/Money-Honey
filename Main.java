@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-//th Main thn evala gia na treksw ta dika mou ennoeitai pws tha allaksei
+
 public class Main {
 
 	public static void main(String[] args) {
