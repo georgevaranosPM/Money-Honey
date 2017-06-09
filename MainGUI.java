@@ -38,7 +38,7 @@ public class MainGUI extends JFrame{
 		Inc_List.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		
 		Inc_List.setModel(new AbstractListModel() {
-			String[] Inc_Values = new String[] {"Έσοδο 1", "Έσοδο 2"};
+			String[] Inc_Values = new String[] {"Ξ�ΟƒΞΏΞ΄ΞΏΟ 1", "Ξ�ΟƒΞΏΞ΄ΞΏ 2"};
 			public int getSize() {
 				return Inc_Values.length;
 			}
@@ -54,7 +54,7 @@ public class MainGUI extends JFrame{
 		JList<String> Exp_List = new JList<String>();
 		Exp_List.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Exp_List.setModel(new AbstractListModel() {
-			String[] Exp_Values = new String[] {"Έξοδο α", "Έξοδο β"};
+			String[] Exp_Values = new String[] {"Ξ�ΞΎΞΏΞ΄ΞΏ Ξ±", "Ξ�ΞΎΞΏΞ΄ΞΏ Ξ²"};
 			public int getSize() {
 				return Exp_Values.length;
 			}
@@ -65,17 +65,17 @@ public class MainGUI extends JFrame{
 		Exp_List.setBounds(159, 85, 144, 150);
 		mainPanel.add(Exp_List);
 		
-		JLabel show_Label = new JLabel("Εμφάνιση Καταχωρήσεων");
+		JLabel show_Label = new JLabel("Ξ•ΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ξ�Ξ±Ο„Ξ±Ο‡Ο‰Ο�Ξ®ΟƒΞµΟ‰Ξ½");
 		show_Label.setBounds(64, 0, 179, 16);
 		show_Label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(show_Label);
 		
-		JLabel from_Date_Label = new JLabel("Από");
+		JLabel from_Date_Label = new JLabel("Ξ‘Ο€Ο�");
 		from_Date_Label.setBounds(6, 22, 61, 16);
 		from_Date_Label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(from_Date_Label);
 		
-		JLabel to_Date_Label = new JLabel("Μέχρι");
+		JLabel to_Date_Label = new JLabel("Ξ�Ξ­Ο‡Ο�ΞΉ");
 		to_Date_Label.setBounds(159, 22, 61, 16);
 		to_Date_Label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(to_Date_Label);
@@ -96,13 +96,13 @@ public class MainGUI extends JFrame{
 		to_Date_Select.setEditor(new JSpinner.DateEditor(to_Date_Select,"dd/MM/yyyy"));
 		mainPanel.add(to_Date_Select);
 		
-		JButton update_Btn = new JButton("Προβολή");
+		JButton update_Btn = new JButton("Ξ Ο�ΞΏΞ²ΞΏΞ»Ξ®");
 		update_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				from_Date = (Date) from_Date_Select.getValue();
 				to_Date = (Date) to_Date_Select.getValue();
 				if(from_Date.after(to_Date)) {
-					JOptionPane.showMessageDialog(null, "Μη έγκυρη μορφή περιόδου");
+					JOptionPane.showMessageDialog(null, "Ξ�Ξ· Ξ­Ξ³ΞΊΟ…Ο�Ξ· ΞΌΞΏΟ�Ο†Ξ® Ο€ΞµΟ�ΞΉΟ�Ξ΄ΞΏΟ…");
 				}
 			}
 		});
@@ -119,7 +119,7 @@ public class MainGUI extends JFrame{
 			mainRightPanel.setLayout(null);
 			
 			
-			JButton editBtn = new JButton("Επεξεργασία");
+			JButton editBtn = new JButton("Ξ•Ο€ΞµΞΎΞµΟ�Ξ³Ξ±ΟƒΞ―Ξ±");
 			editBtn.setBounds(4, 76, 115, 29);
 			editBtn.setBackground(new Color(240, 110, 118));
 			editBtn.addActionListener(new ActionListener() {
@@ -132,7 +132,7 @@ public class MainGUI extends JFrame{
 			
 			mainRightPanel.add(editBtn);
 			
-			JButton deleteBtn = new JButton("Διαγραφή");
+			JButton deleteBtn = new JButton("Ξ”ΞΉΞ±Ξ³Ο�Ξ±Ο†Ξ®");
 			deleteBtn.setBounds(5, 120, 110, 29);
 			deleteBtn.setBackground(new Color(240, 110, 118));
 			deleteBtn.addActionListener(new ActionListener() {
@@ -151,7 +151,7 @@ public class MainGUI extends JFrame{
 		getContentPane().add(mainSouthPanel);
 		mainSouthPanel.setLayout(null);
 		
-		JButton graphsBtn = new JButton("Εμφάνιση Γραφημάτων");
+		JButton graphsBtn = new JButton("Ξ•ΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ξ“Ο�Ξ±Ο†Ξ·ΞΌΞ¬Ο„Ο‰Ξ½");
 		graphsBtn.setSize(190, 29);
 		graphsBtn.setLocation(168, 6);
 		graphsBtn.setBackground(new Color(240, 110, 118));
@@ -181,7 +181,7 @@ public class MainGUI extends JFrame{
 		dateLabel.setForeground(new Color(230, 255, 255));
 		mainNorthPanel.add(dateLabel);
 		
-		JButton editProfBtn = new JButton("Ρυθμίσεις");
+		JButton editProfBtn = new JButton("Ξ΅Ο…ΞΈΞΌΞ―ΟƒΞµΞΉΟ‚");
 		editProfBtn.setBounds(427, 1, 107, 29);
 		editProfBtn.setBackground(new Color(240, 110, 118));
 		editProfBtn.addActionListener(new ActionListener() {
@@ -192,7 +192,7 @@ public class MainGUI extends JFrame{
 		});
 		mainNorthPanel.add(editProfBtn);
 		
-		JButton logOutBtn = new JButton("Αποσύνδεση");
+		JButton logOutBtn = new JButton("Ξ‘Ο€ΞΏΟƒΟ�Ξ½Ξ΄ΞµΟƒΞ·");
 		logOutBtn.setBounds(408, 30, 126, 29);
 		logOutBtn.setBackground(new Color(240, 110, 118));
 		logOutBtn.addActionListener(new ActionListener() {
