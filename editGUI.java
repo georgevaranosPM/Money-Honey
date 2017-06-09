@@ -29,46 +29,46 @@ public class editGUI extends JFrame{
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new Color(75, 75, 100));
 		
-		JLabel edit_Profile = new JLabel("Επεξεργασία Προφίλ");
+		JLabel edit_Profile = new JLabel("Edit Profile");
 		edit_Profile.setBounds(6, 6, 150, 16);
 		edit_Profile.setForeground(new Color(230, 255, 255));
 		getContentPane().add(edit_Profile);
 		
-		JLabel profile = new JLabel("Προφίλ");
+		JLabel profile = new JLabel("Profile");
 		profile.setBounds(16, 34, 61, 16);
 		profile.setForeground(new Color(230, 255, 255));
 		getContentPane().add(profile);
 		
-		JLabel user = new JLabel("Χρήστης");
+		JLabel user = new JLabel("User");
 		user.setBounds(16, 130, 61, 16);
 		user.setForeground(new Color(230, 255, 255));
 		getContentPane().add(user);
 		
-		JLabel username = new JLabel("Όνομα");
+		JLabel username = new JLabel("Name");
 		username.setBounds(60, 62, 61, 16);
 		username.setForeground(new Color(230, 255, 255));
 		getContentPane().add(username);
 		
-		JLabel password = new JLabel("Κωδικός");
+		JLabel password = new JLabel("Password");
 		password.setBounds(60, 97, 61, 16);
 		password.setForeground(new Color(230, 255, 255));
 		getContentPane().add(password);
 		
 		username_Field = new JTextField();
 		username_Field.setEditable(false);
-		username_Field.setBounds(150, 57, 130, 26);
+		username_Field.setBounds(160, 57, 130, 26);
 		getContentPane().add(username_Field);
 		username_Field.setColumns(10);
 		username_Field.setText(Users.get(pos).getUsername());
 		
 		password_Field = new JTextField();
 		password_Field.setEditable(false);
-		password_Field.setBounds(150, 92, 130, 26);
+		password_Field.setBounds(160, 92, 130, 26);
 		getContentPane().add(password_Field);
 		
-		JButton save_Profile_Btn = new JButton("Αποθήκευση");
+		JButton save_Profile_Btn = new JButton("Save");
 		save_Profile_Btn.setBackground(new Color(240, 110, 118));
-		JButton edit_Profile_Btn = new JButton("Επεξεργασία");
+		JButton edit_Profile_Btn = new JButton("Edit");
 		edit_Profile_Btn.setBackground(new Color(240, 110, 118));
 		save_Profile_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,34 +98,34 @@ public class editGUI extends JFrame{
 		edit_Profile_Btn.setBounds(350, 74, 117, 29);
 		getContentPane().add(edit_Profile_Btn);
 		
-		JLabel name = new JLabel("Ονομ/μο");
+		JLabel name = new JLabel("Full Name");
 		name.setBounds(60, 158, 70, 16);
 		name.setForeground(new Color(230, 255, 255));
 		getContentPane().add(name);
 		
-		JLabel vehicles = new JLabel("Οχήματα");
+		JLabel vehicles = new JLabel("Vehicles");
 		vehicles.setBounds(60, 193, 61, 16);
 		vehicles.setForeground(new Color(230, 255, 255));
 		getContentPane().add(vehicles);
 		
-		JLabel estates = new JLabel("Ακίνητα");
+		JLabel estates = new JLabel("Estates");
 		estates.setBounds(60, 228, 61, 16);
 		estates.setForeground(new Color(230, 255, 255));
 		getContentPane().add(estates);
 		
-		JLabel limit = new JLabel("Όριο Εξόδων");
-		limit.setBounds(60, 263, 90, 16);
+		JLabel limit = new JLabel("Expenses Limit");
+		limit.setBounds(60, 263, 100, 16);
 		limit.setForeground(new Color(230, 255, 255));
 		getContentPane().add(limit);
 		
 		name_Field = new JTextField();
-		name_Field.setBounds(150, 153, 130, 26);
+		name_Field.setBounds(160, 153, 130, 26);
 		getContentPane().add(name_Field);
 		name_Field.setColumns(10);
 		name_Field.setEditable(false);
 		
 		limit_Field = new JTextField();
-		limit_Field.setBounds(150, 258, 130, 26);
+		limit_Field.setBounds(160, 258, 130, 26);
 		getContentPane().add(limit_Field);
 		limit_Field.setColumns(10);
 		limit_Field.setEditable(false);
@@ -134,17 +134,17 @@ public class editGUI extends JFrame{
 		estates_Field.setBackground(new Color(240, 110, 118));
 		estates_Field.setModel(new DefaultComboBoxModel(new String[] {"spiti 1", "spiti 2"}));
 		estates_Field.setSelectedIndex(-1);
-		estates_Field.setBounds(150, 224, 130, 27);
+		estates_Field.setBounds(160, 223, 130, 27);
 		getContentPane().add(estates_Field);
 		
 		JComboBox vehicles_Field = new JComboBox();
 		vehicles_Field.setBackground(new Color(240, 110, 118));
 		vehicles_Field.setModel(new DefaultComboBoxModel(new String[] {"karo 1", "karo 2"}));
 		vehicles_Field.setSelectedIndex(-1);
-		vehicles_Field.setBounds(150, 189, 130, 27);
+		vehicles_Field.setBounds(160, 188, 130, 27);
 		getContentPane().add(vehicles_Field);
 		
-		JButton end_Btn = new JButton("Τέλος");
+		JButton end_Btn = new JButton("Complete");
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LoginGUI.SaveStatus(Users);
@@ -157,9 +157,9 @@ public class editGUI extends JFrame{
 		getContentPane().add(end_Btn);
 		
 		
-		JButton save_User_Btn = new JButton("Αποθήκευση");
+		JButton save_User_Btn = new JButton("Save");
 		save_User_Btn.setBackground(new Color(240, 110, 118));
-		JButton edit_User_Btn = new JButton("Επεξεργασία");
+		JButton edit_User_Btn = new JButton("Edit");
 		edit_User_Btn.setBackground(new Color(240, 110, 118));
 		save_User_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +194,7 @@ public class editGUI extends JFrame{
 				new add_VehicleGUI();
 			}
 		});
-		add_Veh_Btn.setBounds(285, 192, 25, 25);
+		add_Veh_Btn.setBounds(295, 190, 25, 25);
 		getContentPane().add(add_Veh_Btn);
 		
 		JButton add_Estate_Btn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Money-Honey/add.png"));
@@ -204,7 +204,7 @@ public class editGUI extends JFrame{
 				new add_EstateGUI();
 			}
 		});
-		add_Estate_Btn.setBounds(285, 222, 25, 25);
+		add_Estate_Btn.setBounds(295, 224, 25, 25);
 		getContentPane().add(add_Estate_Btn);
 		
 	}

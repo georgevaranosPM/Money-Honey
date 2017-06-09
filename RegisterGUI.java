@@ -24,24 +24,24 @@ public class RegisterGUI extends JFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblRegister = new JLabel("Εγγραφή");
+		JLabel lblRegister = new JLabel("Register");
 		lblRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
 		lblRegister.setForeground(new Color(230, 255, 255));
 		lblRegister.setBounds(6, 6, 79, 19);
 		panel.add(lblRegister);
 		
-		JLabel profile_Label = new JLabel("Προφίλ");
+		JLabel profile_Label = new JLabel("Profile");
 		profile_Label.setBounds(215, 8, 61, 16);
 		profile_Label.setForeground(new Color(230, 255, 255));
 		panel.add(profile_Label);
 		
-		JLabel username_Label = new JLabel("Όνομα Χρήστη");
+		JLabel username_Label = new JLabel("Username");
 		username_Label.setBounds(94, 40, 99, 16);
 		username_Label.setForeground(new Color(230, 255, 255));
 		panel.add(username_Label);
 		
-		JLabel password_Label = new JLabel("Κωδικός");
-		password_Label.setBounds(135, 68, 59, 16);
+		JLabel password_Label = new JLabel("Password");
+		password_Label.setBounds(94, 68, 59, 16);
 		password_Label.setForeground(new Color(230, 255, 255));
 		panel.add(password_Label);
 		
@@ -55,18 +55,18 @@ public class RegisterGUI extends JFrame {
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel user_Label = new JLabel("Χρήστης");
+		JLabel user_Label = new JLabel("User");
 		user_Label.setBounds(212, 101, 61, 16);
 		user_Label.setForeground(new Color(230, 255, 255));
 		panel.add(user_Label);
 		
-		JLabel name_Label = new JLabel("Ονοματεπώνυμο");
-		name_Label.setBounds(83, 134, 110, 16);
+		JLabel name_Label = new JLabel("Full Name");
+		name_Label.setBounds(94, 134, 110, 16);
 		name_Label.setForeground(new Color(230, 255, 255));
 		panel.add(name_Label);
 		
-		JLabel date_Label = new JLabel("Ημ.Γέννησης");
-		date_Label.setBounds(108, 159, 85, 16);
+		JLabel date_Label = new JLabel("Birthday");
+		date_Label.setBounds(94, 159, 85, 16);
 		date_Label.setForeground(new Color(230, 255, 255));
 		panel.add(date_Label);
 		
@@ -80,17 +80,17 @@ public class RegisterGUI extends JFrame {
 		panel.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JLabel estates_Label = new JLabel("Ακίνητα");
-		estates_Label.setBounds(134, 227, 56, 16);
+		JLabel estates_Label = new JLabel("Estates");
+		estates_Label.setBounds(94, 228, 56, 16);
 		estates_Label.setForeground(new Color(230, 255, 255));
 		panel.add(estates_Label);
 		
-		JLabel vehicles_Label = new JLabel("Οχήματα");
-		vehicles_Label.setBounds(128, 255, 62, 16);
+		JLabel vehicles_Label = new JLabel("Vehicles");
+		vehicles_Label.setBounds(94, 256, 62, 16);
 		vehicles_Label.setForeground(new Color(230, 255, 255));
 		panel.add(vehicles_Label);
 		
-		JButton add_Estate_Btn = new JButton("Προσθήκη");
+		JButton add_Estate_Btn = new JButton("Add");
 		add_Estate_Btn.setBackground(new Color(240, 110, 118));
 		add_Estate_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -100,7 +100,7 @@ public class RegisterGUI extends JFrame {
 		add_Estate_Btn.setBounds(212, 222, 117, 29);
 		panel.add(add_Estate_Btn);
 		
-		JButton add_Vehicle_Btn = new JButton("Προσθήκη");
+		JButton add_Vehicle_Btn = new JButton("Add");
 		add_Vehicle_Btn.setBackground(new Color(240, 110, 118));
 		add_Vehicle_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,8 +110,8 @@ public class RegisterGUI extends JFrame {
 		add_Vehicle_Btn.setBounds(212, 250, 117, 29);
 		panel.add(add_Vehicle_Btn);
 		
-		JLabel limit_Label = new JLabel("Όριο Εξόδων");
-		limit_Label.setBounds(100, 312, 90, 16);
+		JLabel limit_Label = new JLabel("Expenses Limit");
+		limit_Label.setBounds(94, 312, 100, 16);
 		limit_Label.setForeground(new Color(230, 255, 255));
 		panel.add(limit_Label);
 		
@@ -120,7 +120,7 @@ public class RegisterGUI extends JFrame {
 		panel.add(textField_5);
 		textField_5.setColumns(10);
 		
-		JButton end_Btn = new JButton("Ολοκλήρωση");
+		JButton end_Btn = new JButton("Complete");
 		end_Btn.setBackground(new Color(240, 110, 118));
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,7 +130,7 @@ public class RegisterGUI extends JFrame {
 		end_Btn.setBounds(417, 343, 117, 29);
 		panel.add(end_Btn);
 		
-		JButton back_Button = new JButton("Πίσω");
+		JButton back_Button = new JButton("Back");
 		back_Button.setBackground(new Color(240, 110, 118));
 		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

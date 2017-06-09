@@ -22,24 +22,24 @@ public class add_VehicleGUI extends JFrame{
 		getContentPane().setLayout(null);
 		getContentPane().setBackground(new Color(75, 75, 100));
 		
-		JLabel title_Lbl = new JLabel("Προσθήκη Οχήματος");
+		JLabel title_Lbl = new JLabel("Add Vehicle");
 		title_Lbl.setForeground(new Color(230, 255, 255));
 		title_Lbl.setBounds(6, 6, 140, 16);
 		getContentPane().add(title_Lbl);
 		
-		JLabel car_Id_Lbl = new JLabel("Πινακίδα");
+		JLabel car_Id_Lbl = new JLabel("ID");
 		car_Id_Lbl.setForeground(new Color(230, 255, 255));
-		car_Id_Lbl.setBounds(85, 75, 61, 16);
+		car_Id_Lbl.setBounds(68, 75, 20, 16);
 		getContentPane().add(car_Id_Lbl);
 		
-		JLabel year_Lbl = new JLabel("Ημ. Κυκλοφορίας");
+		JLabel year_Lbl = new JLabel("First Date");
 		year_Lbl.setForeground(new Color(230, 255, 255));
-		year_Lbl.setBounds(31, 145, 115, 16);
+		year_Lbl.setBounds(68, 145, 80, 16);
 		getContentPane().add(year_Lbl);
 		
-		JLabel cc_Lbl = new JLabel("Κυβικά");
+		JLabel cc_Lbl = new JLabel("CC");
 		cc_Lbl.setForeground(new Color(230, 255, 255));
-		cc_Lbl.setBounds(96, 215, 50, 16);
+		cc_Lbl.setBounds(68, 215, 50, 16);
 		getContentPane().add(cc_Lbl);
 		
 		car_Id_Field = new JTextField();
@@ -60,7 +60,7 @@ public class add_VehicleGUI extends JFrame{
 		getContentPane().add(cc_Field);
 		cc_Field.setColumns(10);
 		
-		JButton end_Btn = new JButton("Ολοκλήρωση");
+		JButton end_Btn = new JButton("Complete");
 		end_Btn.setBackground(new Color(240, 110, 118));
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -71,7 +71,7 @@ public class add_VehicleGUI extends JFrame{
 		end_Btn.setBounds(417, 303, 117, 29);
 		getContentPane().add(end_Btn);
 		
-		JButton back_Button = new JButton("Πίσω");
+		JButton back_Button = new JButton("Back");
 		back_Button.setBackground(new Color(240, 110, 118));
 		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
