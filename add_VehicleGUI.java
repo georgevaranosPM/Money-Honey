@@ -14,7 +14,7 @@ public class add_VehicleGUI extends JFrame{
 	private JTextField car_Id_Field;
 	private JTextField cc_Field;
 	
-	public add_VehicleGUI() {
+	public add_VehicleGUI(User logginUser) {
 		
 		this.setVisible(true);
 		this.setSize(540,  360);
@@ -64,11 +64,13 @@ public class add_VehicleGUI extends JFrame{
 		end_Btn.setBackground(new Color(240, 110, 118));
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//aUser.vehicles.add();
+				Vehicle vehicle = new Vehicle(car_Id_Field.getText(),Integer.parseInt(cc_Field.getText()));
+				logginUser.add_Vehicle(vehicle);
+				
 				close_GUI();
 			}
 		});
-		end_Btn.setBounds(417, 303, 117, 29);
+		end_Btn.setBounds(407, 282, 117, 29);
 		getContentPane().add(end_Btn);
 		
 		JButton back_Button = new JButton("Back");

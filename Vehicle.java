@@ -7,14 +7,24 @@ public class Vehicle {
 	private boolean taxed;
 	
 	
-	public Vehicle(int cc, int year, String veh_id, boolean taxed) {
+	public Vehicle(String veh_id, int cc) {
 		super();
 		this.cc = cc;
-		this.year = year;
 		this.veh_id = veh_id;
-		this.taxed = taxed;
+		
 	}
 	
+	
+	public int getCc() {
+		return cc;
+	}
+
+
+	public String getVeh_id() {
+		return veh_id;
+	}
+
+
 	public double calculate_veh_charge(){
 		
 		double charge = 0;

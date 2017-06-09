@@ -16,6 +16,24 @@ public class Income implements Serializable {
 		this.monthly = monthly;
 		this.taxed = taxed;
 	}
+	
+	
+
+
+
+	public boolean isMonthly() {
+		return monthly;
+	}
+
+
+
+
+
+	public boolean isTaxed() {
+		return taxed;
+	}
+
+
 
 
 

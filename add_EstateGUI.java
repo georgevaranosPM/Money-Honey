@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 public class add_EstateGUI extends JFrame{
 	private JTextField address_Field;
 	private JTextField sq_m_Field;
-	public add_EstateGUI() {
+	public add_EstateGUI(User logginUser) {
 		
 		
 		this.setVisible(true);
@@ -51,7 +51,8 @@ public class add_EstateGUI extends JFrame{
 		end_Btn.setBackground(new Color(240, 110, 118));
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//aUser.estates.add();
+				Estate estate = new Estate(address_Field.getText(),Integer.parseInt(sq_m_Field.getText()));
+				logginUser.add_Estate(estate);
 				close_GUI();
 			}
 		});

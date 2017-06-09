@@ -21,7 +21,7 @@ public class editGUI extends JFrame{
 	private JTextField name_Field;
 	private JTextField limit_Field;
 	
-	public editGUI(User loggedin_User ) {
+	public editGUI(User logginUser ) {
 		
 		this.setVisible(true);
 		this.setSize(540, 360);
@@ -59,7 +59,7 @@ public class editGUI extends JFrame{
 		username_Field.setBounds(160, 57, 130, 26);
 		getContentPane().add(username_Field);
 		username_Field.setColumns(10);
-		username_Field.setText(loggedin_User.getUsername());
+		username_Field.setText(logginUser.getUsername());
 		
 		password_Field = new JTextField();
 		password_Field.setEditable(false);
@@ -76,8 +76,8 @@ public class editGUI extends JFrame{
 				password_Field.setEditable(false);
 				edit_Profile_Btn.setVisible(true);
 				save_Profile_Btn.setVisible(false);
-				loggedin_User.setUsername(username_Field.getText());
-				loggedin_User.setPassword(password_Field.getText());
+				logginUser.setUsername(username_Field.getText());
+				logginUser.setPassword(password_Field.getText());
 			
 				
 			}
@@ -145,13 +145,13 @@ public class editGUI extends JFrame{
 		getContentPane().add(vehicles_Field);
 		
 		JButton end_Btn = new JButton("Complete");
-	/*	end_Btn.addActionListener(new ActionListener() {
+	end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginGUI.SaveStatus(Users);
+				
 				close_GUI();
-				new MainGUI(loggedin_User);
+				new MainGUI(logginUser);
 			}
-		});*/
+		});
 		end_Btn.setBounds(417, 303, 117, 29);
 		end_Btn.setBackground(new Color(240, 110, 118));
 		getContentPane().add(end_Btn);
@@ -191,7 +191,7 @@ public class editGUI extends JFrame{
 		add_Veh_Btn.setBackground(new Color(240, 110, 118));
 		add_Veh_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new add_VehicleGUI();
+				new add_VehicleGUI(logginUser);
 			}
 		});
 		add_Veh_Btn.setBounds(295, 190, 25, 25);
@@ -201,7 +201,7 @@ public class editGUI extends JFrame{
 		add_Estate_Btn.setBackground(new Color(240, 110, 118));
 		add_Estate_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new add_EstateGUI();
+				new add_EstateGUI(logginUser);
 			}
 		});
 		add_Estate_Btn.setBounds(295, 224, 25, 25);

@@ -13,13 +13,26 @@ public class User implements Serializable {
 	private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 	private double limit;
 	
-	public User(String username, String password) {
+	public User(String username, String password,double limit) {
 		
 		this.username = username;
 		this.password = password;
 	}
 	
 	
+	
+	public ArrayList<Estate> getEstates() {
+		return estates;
+	}
+
+
+
+	public ArrayList<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+
+
 	public String getUsername() {
 		return username;
 	}
@@ -63,6 +76,25 @@ public class User implements Serializable {
 		for(Income income : incomes)
 			System.out.println(income.getIn_tag() + income.getIn_amount());
 	
+	}
+	public double getIncomeTax(){
+		double charge=0;
+		for(Income income : incomes)
+		{
+			if(income.isTaxed())
+			{
+				charge+=income.getIn_amount();
+			}
+		}
+		if(charge<=20000)
+			charge=charge*0.22;
+		else if(charge<=30000)
+			charge=charge*0.29;
+		else if(charge<=40000)
+			charge=charge*0.37;
+		else
+			charge=charge*0.45;
+		return charge;
 	}
 	
 

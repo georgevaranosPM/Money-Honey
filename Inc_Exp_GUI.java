@@ -7,6 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -174,37 +175,62 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		JLabel ExpTag_label = new JLabel("Type of Expense");
 		ExpTag_label.setForeground(new Color(230, 255, 255));
-		ExpTag_label.setBounds(170, 38, 110, 20);
+		ExpTag_label.setBounds(210, 38, 110, 20);
 		ExpPanel.add(ExpTag_label);
 		
 		JLabel ExpAmount_label = new JLabel("Amount");
 		ExpAmount_label.setForeground(new Color(230, 255, 255));
-		ExpAmount_label.setBounds(292, 38, 71, 20);
+		ExpAmount_label.setBounds(332, 38, 71, 20);
 		ExpPanel.add(ExpAmount_label);
 		
 		ExpAmountField = new JTextField();
-		ExpAmountField.setBounds(291, 70, 72, 22);
+		ExpAmountField.setBounds(331, 70, 72, 22);
 		ExpPanel.add(ExpAmountField);
 		ExpAmountField.setColumns(10);
+		ExpAmountField.setEditable(false);
 		
-		String[] kindofExpenses = {"Consumable", "Bill", "Tax"};
+		String[] kindofExpenses = {"Consumable", "Bill", "Tax", "   Income Tax", "   Vehicle Tax", "   Estate Tax"};
 		JComboBox comboBox = new JComboBox(kindofExpenses);
 		comboBox.setBackground(new Color(240, 110, 118));
-		comboBox.setBounds(22, 70, 130, 22);
+		comboBox.setBounds(6, 70, 130, 22);
 		ExpPanel.add(comboBox);
+		
+		
 		
 		String[] consumables = def_Cons.getDefault_Consumables();
 		JComboBox cons_ComboBox = new JComboBox(consumables);
 		cons_ComboBox.setBackground(new Color(240, 110, 118));
-		cons_ComboBox.setBounds(170, 70, 99, 22);
+		cons_ComboBox.setBounds(210, 70, 99, 22);
 		ExpPanel.add(cons_ComboBox);
+		cons_ComboBox.setVisible(false);
 		
 		String[] bills = def_Bill.getDefault_Bills();
-		JComboBox bills_ComboBox = new JComboBox(consumables);
+		JComboBox bills_ComboBox = new JComboBox(bills);
 		bills_ComboBox.setBackground(new Color(240, 110, 118));
-		bills_ComboBox.setBounds(170, 70, 99, 22);
+		bills_ComboBox.setBounds(210, 70, 99, 22);
 		ExpPanel.add(bills_ComboBox);
 		bills_ComboBox.setVisible(false);
+		
+		String[] veh = new String[logginUser.getVehicles().size()];
+		for(int i=0; i<logginUser.getVehicles().size(); i++) {
+			veh[i] = logginUser.getVehicles().get(i).getVeh_id();
+		}
+		JComboBox vehicles_comboBox = new JComboBox(veh);
+		vehicles_comboBox.setBounds(210, 71, 99, 20);
+		vehicles_comboBox.setBackground(new Color(240, 110, 118));
+		ExpPanel.add(vehicles_comboBox);
+		vehicles_comboBox.setVisible(false);
+		
+		
+		String[] est = new String[logginUser.getEstates().size()];
+		for(int i=0; i<logginUser.getEstates().size(); i++) {
+			est[i] = logginUser.getEstates().get(i).getAddress();
+		}
+		JComboBox estates_comboBox = new JComboBox(est);
+		estates_comboBox.setBounds(210, 71, 99, 20);
+		estates_comboBox.setBackground(new Color(240, 110, 118));
+		ExpPanel.add(estates_comboBox);
+		estates_comboBox.setVisible(false);
 		
 		
 		JButton AddExpButton = new JButton("Add");
@@ -242,6 +268,54 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpBackButton.setBounds(6, 237, 97, 25);
 		ExpPanel.add(ExpBackButton);
 		
+		
+		JButton btnNewButton = new JButton("Go!");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(comboBox.getSelectedIndex()==0) {
+					estates_comboBox.setVisible(false);
+					cons_ComboBox.setVisible(true);
+					bills_ComboBox.setVisible(false);
+					vehicles_comboBox.setVisible(false);
+					ExpAmountField.setEditable(true);
+				}
+				else if(comboBox.getSelectedIndex()==1) {
+					estates_comboBox.setVisible(false);
+					cons_ComboBox.setVisible(false);
+					bills_ComboBox.setVisible(true);
+					vehicles_comboBox.setVisible(false);
+					ExpAmountField.setEditable(true);
+				}
+				else if(comboBox.getSelectedIndex()==2) {
+					JOptionPane.showMessageDialog(ExpPanel,
+						    "Choose a tax type.",
+						    "Choose tax type", JOptionPane.WARNING_MESSAGE);
+				}
+				else if(comboBox.getSelectedIndex()==3) {
+
+					ExpAmountField.setText(Double.toString(logginUser.getIncomeTax()));
+				}
+				else if(comboBox.getSelectedIndex()==4) {
+					estates_comboBox.setVisible(false);
+					cons_ComboBox.setVisible(false);
+					bills_ComboBox.setVisible(false);
+					vehicles_comboBox.setVisible(true);
+					
+					ExpAmountField.setText(Double.toString(logginUser.getVehicles().get(vehicles_comboBox.getSelectedIndex()).calculate_veh_charge()));
+				}
+				else if(comboBox.getSelectedIndex()==5) {
+					estates_comboBox.setVisible(true);
+					cons_ComboBox.setVisible(false);
+					bills_ComboBox.setVisible(false);
+					vehicles_comboBox.setVisible(false);
+					
+					ExpAmountField.setText(Double.toString(logginUser.getEstates().get(estates_comboBox.getSelectedIndex()).calculate_est_charge()));
+				}
+			}
+		});
+		btnNewButton.setBounds(146, 69, 54, 25);
+		ExpPanel.add(btnNewButton);
+		
 		//ActionListenr tou ExpButton
 		ExpButton.addActionListener(new ActionListener(){
 
@@ -262,5 +336,4 @@ public class Inc_Exp_GUI extends JFrame {
 			}
 		});
 	}
-	
 }

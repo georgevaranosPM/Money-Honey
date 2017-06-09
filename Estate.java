@@ -10,6 +10,17 @@ public class Estate {
 		this.square_meters = square_meters;
 	}
 	
+	
+	public String getAddress() {
+		return address;
+	}
+
+
+	public int getSquare_meters() {
+		return square_meters;
+	}
+
+
 	public double calculate_est_charge(){
 		
 		double charge = 0 ;

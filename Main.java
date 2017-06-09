@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Income inc1 = new Income("misthos", 450,true,false);
-		User aUser = new User("patakos","123" );
+		User aUser = new User("patakos","123",1233 );
 		aUser.add_Income(inc1);
 		ArrayList<User> UsersInit = new ArrayList<User>();
 		UsersInit.add(aUser);
