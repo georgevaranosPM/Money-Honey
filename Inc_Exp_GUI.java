@@ -1,13 +1,12 @@
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -15,8 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class Inc_Exp_GUI extends JFrame {
 
@@ -38,6 +37,9 @@ public class Inc_Exp_GUI extends JFrame {
 	 * Create the frame.
 	 */
 	public Inc_Exp_GUI(User logginUser) {
+		
+		
+		
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(75, 75, 100));
@@ -69,6 +71,23 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpButton.setBackground(new Color(240, 110, 118));
 		ExpButton.setBounds(237, 126, 97, 25);
 		mainPanel.add(ExpButton);
+		
+		JButton backTo_MainGUI = new JButton("Back");
+		backTo_MainGUI.setBackground(Color.PINK);
+		backTo_MainGUI.setForeground(Color.BLACK);
+		backTo_MainGUI.setBounds(6, 206, 89, 23);
+		mainPanel.add(backTo_MainGUI);
+		
+		backTo_MainGUI.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				new MainGUI(logginUser);
+				
+			}
+			
+		});
 		
 		
 		JPanel IncPanel = new JPanel();
@@ -109,29 +128,6 @@ public class Inc_Exp_GUI extends JFrame {
 		ConstantcheckBox.setBounds(250, 180, 140, 25);
 		IncPanel.add(ConstantcheckBox);
 		
-		//ActionListener gia to TaxedcheckBox
-		TaxedcheckBox.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(TaxedcheckBox.isSelected())
-					ConstantcheckBox.setSelected(false);
-				
-			}
-			
-		});;
-		
-		//ActionListener gia to ConstantcheckBox
-		ConstantcheckBox.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(TaxedcheckBox.isSelected())
-					TaxedcheckBox.setSelected(false);
-				
-			}
-			
-		});;
 		
 		JButton AddIncButton = new JButton("Add");
 		AddIncButton.setBackground(new Color(240, 110, 118));
@@ -146,13 +142,13 @@ public class Inc_Exp_GUI extends JFrame {
 				boolean taxed = true;
 				boolean monthly = false;
 				double amount = Double.parseDouble(IncAmountField.getText());
-				//to true to evala apo monos mou..meta tha dw pws to pairnw apo to checkbox
+				
 				if (TaxedcheckBox.isSelected()){
 					 taxed = true;
-					 monthly = false;
+					
 				}
 				else if (ConstantcheckBox.isSelected()){
-					 taxed = false;
+					
 					 monthly = true;
 				}
 				Income income = new Income(IncTagField.getText(), amount,monthly,taxed);
@@ -212,7 +208,7 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpAmountField.setColumns(10);
 		
 		String[] kindofExpenses = {"Consumable", "Bill", "Tax"};
-		JComboBox comboBox = new JComboBox(kindofExpenses);
+		JComboBox<String> comboBox = new JComboBox<String>(kindofExpenses);
 		comboBox.setBackground(new Color(240, 110, 118));
 		comboBox.setBounds(22, 70, 130, 22);
 		ExpPanel.add(comboBox);
@@ -299,4 +295,6 @@ public class Inc_Exp_GUI extends JFrame {
 			
 		});
 	}
+	
+	
 }
