@@ -77,9 +77,10 @@ import javax.swing.JTextField;
 			public void actionPerformed(ActionEvent e) {
 				String UsernameText = textField_USERNAME.getText();
 				String PasswordText = textField_PASSWORD.getText();
-				for (int i=0; i<Users.size(); i++ ){
-					if (UsernameText.equals(Users.get(i).getUsername())&& PasswordText.equals(Users.get(i).getPassword()))
-				       {	new MainGUI(Users,i);
+				for (User user : Users ){
+					if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
+				       {	User loggedin_User=user;
+						new MainGUI(loggedin_User);
 				       	disposeGUI();break;}
 					else JOptionPane.showMessageDialog(panel,
 						    "User "+UsernameText+" does not exist!");}}
