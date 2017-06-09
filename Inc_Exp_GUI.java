@@ -2,11 +2,6 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -19,7 +14,6 @@ import javax.swing.border.EmptyBorder;
 
 public class Inc_Exp_GUI extends JFrame {
 
-	
 	private JPanel contentPane;
 	private JTextField IncTagField;
 	private JTextField IncAmountField;
@@ -28,16 +22,7 @@ public class Inc_Exp_GUI extends JFrame {
 	private Consumable def_Cons = new Consumable("consumable", 0);
 	//private ArrayList<Income> incomes;
 
-	/**
-	 * Launch the application.
-	 */
-	
-
-	/**
-	 * Create the frame.
-	 */
 	public Inc_Exp_GUI(User logginUser) {
-		
 		
 		
 		setBounds(100, 100, 450, 300);
@@ -46,8 +31,6 @@ public class Inc_Exp_GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-		
-		
 		
 		this.setVisible(true);
 		
@@ -73,9 +56,8 @@ public class Inc_Exp_GUI extends JFrame {
 		mainPanel.add(ExpButton);
 		
 		JButton backTo_MainGUI = new JButton("Back");
-		backTo_MainGUI.setBackground(Color.PINK);
-		backTo_MainGUI.setForeground(Color.BLACK);
-		backTo_MainGUI.setBounds(6, 206, 89, 23);
+		backTo_MainGUI.setBackground(new Color(240, 110, 118));
+		backTo_MainGUI.setBounds(6, 239, 89, 23);
 		mainPanel.add(backTo_MainGUI);
 		
 		backTo_MainGUI.addActionListener(new ActionListener(){
@@ -83,8 +65,6 @@ public class Inc_Exp_GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				new MainGUI(logginUser);
-				
 			}
 			
 		});
@@ -208,7 +188,7 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpAmountField.setColumns(10);
 		
 		String[] kindofExpenses = {"Consumable", "Bill", "Tax"};
-		JComboBox<String> comboBox = new JComboBox<String>(kindofExpenses);
+		JComboBox comboBox = new JComboBox(kindofExpenses);
 		comboBox.setBackground(new Color(240, 110, 118));
 		comboBox.setBounds(22, 70, 130, 22);
 		ExpPanel.add(comboBox);
@@ -226,15 +206,6 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpPanel.add(bills_ComboBox);
 		bills_ComboBox.setVisible(false);
 		
-		comboBox.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        if(comboBox.getSelectedIndex()==2) {
-		        	cons_ComboBox.setVisible(false);
-		        	bills_ComboBox.setVisible(true);
-		        	
-		        }
-		    }
-		});
 		
 		JButton AddExpButton = new JButton("Add");
 		AddExpButton.setBackground(new Color(240, 110, 118));
@@ -285,16 +256,11 @@ public class Inc_Exp_GUI extends JFrame {
 
 		//ActionListener tou ExpBackButton
 		ExpBackButton.addActionListener(new ActionListener(){
-
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ExpPanel.setVisible(false);
 				mainPanel.setVisible(true);
-				
+				ExpPanel.setVisible(false);
 			}
-			
 		});
 	}
-	
 	
 }
