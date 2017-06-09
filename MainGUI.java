@@ -19,8 +19,8 @@ public class MainGUI extends JFrame{
 	private Date from_Date;
 	private Date to_Date;
 	
-	public MainGUI(ArrayList<User>Users,int pos) {
-		User aUser=Users.get(pos);
+	public MainGUI(User loggedin_User) {
+		
 		getContentPane().setLayout(null);
 		
 		//////Main Panel//////
@@ -161,7 +161,7 @@ public class MainGUI extends JFrame{
 		getContentPane().add(mainNorthPanel);
 		mainNorthPanel.setLayout(null);
 		
-		JLabel userLabel = new JLabel(aUser.getUsername());
+		JLabel userLabel = new JLabel(loggedin_User.getUsername());
 		userLabel.setBounds(32, 14, 100, 16);
 		userLabel.setFont(getFont());
 		userLabel.setForeground(new Color(230, 255, 255));
@@ -179,7 +179,7 @@ public class MainGUI extends JFrame{
 		editProfBtn.setBackground(new Color(240, 110, 118));
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new editGUI(Users,pos);
+				new editGUI(loggedin_User);
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
@@ -189,13 +189,13 @@ public class MainGUI extends JFrame{
 		logOutBtn.setBounds(427, 32, 107, 29);
 
 		logOutBtn.setBackground(new Color(240, 110, 118));
-		logOutBtn.addActionListener(new ActionListener() {
+		/*logOutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
 				LoginGUI.SaveStatus(Users);
 				new LoginGUI();
 			}
-		});
+		});*/
 		mainNorthPanel.add(logOutBtn);
 		mainNorthPanel.setBackground(new Color(75, 75, 100));
 		
@@ -221,7 +221,7 @@ public class MainGUI extends JFrame{
 		sbmtBtn.setBounds(427, 32, 107, 29);
 		sbmtBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Inc_Exp_GUI(null);
+				new Inc_Exp_GUI(loggedin_User);
 			}
 		});
 		mainLeftPanel.add(sbmtBtn);

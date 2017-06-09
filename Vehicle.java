@@ -16,8 +16,21 @@ public class Vehicle {
 	}
 	
 	public double calculate_veh_charge(){
-		// NA VROUME TIS XREOSEIS ANA KUVIKO //
+		
 		double charge = 0;
+		if(cc<=785)
+			charge=55;
+		else if(cc>785 && cc<=1000)
+			charge=120;
+		else if(cc>1000 && cc<1400)
+			charge=135;
+		else if(cc>=1400 && cc<1600)
+			charge=255;
+		else if(cc>=1600 && cc<1800)
+			charge=280;
+		else
+			charge=320;
+		
 		
 		
 		return charge;

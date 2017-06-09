@@ -11,9 +11,20 @@ public class Estate {
 	}
 	
 	public double calculate_est_charge(){
-		// NA VROUME XREOSEIS ANA TETRAGWNIKA METRA//
 		
 		double charge = 0 ;
+		
+		if(square_meters<80)
+			charge=square_meters*40;
+		else if(square_meters<=120)
+			charge=square_meters*65;
+		else if(square_meters<=200)
+			charge=square_meters*110;
+		else if(square_meters<=300)
+			charge=square_meters*200;
+		else 
+			charge=square_meters*400;
+		
 		
 		return charge;
 	}
