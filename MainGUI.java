@@ -10,10 +10,7 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Image;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.SystemColor;
 
@@ -66,12 +63,6 @@ public class MainGUI extends JFrame{
 		mainPanel.add(Exp_List);
 		
 
-		JLabel show_Label = new JLabel("b,b,");
-		show_Label.setBounds(64, 0, 179, 16);
-		show_Label.setForeground(new Color(230, 255, 255));
-		mainPanel.add(show_Label);
-		
-
 
 		JLabel from_Date_Label = new JLabel("From");
 
@@ -82,7 +73,7 @@ public class MainGUI extends JFrame{
 
 		JLabel to_Date_Label = new JLabel("To");
 
-		to_Date_Label.setBounds(159, 22, 61, 16);
+		to_Date_Label.setBounds(170, 22, 20, 16);
 		to_Date_Label.setForeground(new Color(230, 255, 255));
 		mainPanel.add(to_Date_Label);
 		
@@ -157,7 +148,7 @@ public class MainGUI extends JFrame{
 		graphsBtn.setBackground(new Color(240, 110, 118));
 		graphsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				////Gui Grafhmatwn
+				new choose_DiagramGUI();
 			}
 		});
 		mainSouthPanel.add(graphsBtn);

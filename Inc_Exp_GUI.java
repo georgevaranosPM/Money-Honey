@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -22,8 +24,9 @@ public class Inc_Exp_GUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField IncTagField;
 	private JTextField IncAmountField;
-	private JTextField ExpTagField;
 	private JTextField ExpAmountField;
+	private Bill def_Bill = new Bill("bill", 0);
+	private Consumable def_Cons = new Consumable("consumable", 0);
 	//private ArrayList<Income> incomes;
 
 	/**
@@ -195,18 +198,13 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		JLabel ExpTag_label = new JLabel("Type of Expense");
 		ExpTag_label.setForeground(new Color(230, 255, 255));
-		ExpTag_label.setBounds(180, 38, 110, 20);
+		ExpTag_label.setBounds(170, 38, 110, 20);
 		ExpPanel.add(ExpTag_label);
 		
 		JLabel ExpAmount_label = new JLabel("Amount");
 		ExpAmount_label.setForeground(new Color(230, 255, 255));
 		ExpAmount_label.setBounds(292, 38, 71, 20);
 		ExpPanel.add(ExpAmount_label);
-		
-		ExpTagField = new JTextField();
-		ExpTagField.setBounds(180, 70, 72, 22);
-		ExpPanel.add(ExpTagField);
-		ExpTagField.setColumns(10);
 		
 		ExpAmountField = new JTextField();
 		ExpAmountField.setBounds(291, 70, 72, 22);
@@ -217,8 +215,30 @@ public class Inc_Exp_GUI extends JFrame {
 		JComboBox comboBox = new JComboBox(kindofExpenses);
 		comboBox.setBackground(new Color(240, 110, 118));
 		comboBox.setBounds(22, 70, 130, 22);
-		
 		ExpPanel.add(comboBox);
+		
+		String[] consumables = def_Cons.getDefault_Consumables();
+		JComboBox cons_ComboBox = new JComboBox(consumables);
+		cons_ComboBox.setBackground(new Color(240, 110, 118));
+		cons_ComboBox.setBounds(170, 70, 99, 22);
+		ExpPanel.add(cons_ComboBox);
+		
+		String[] bills = def_Bill.getDefault_Bills();
+		JComboBox bills_ComboBox = new JComboBox(consumables);
+		bills_ComboBox.setBackground(new Color(240, 110, 118));
+		bills_ComboBox.setBounds(170, 70, 99, 22);
+		ExpPanel.add(bills_ComboBox);
+		bills_ComboBox.setVisible(false);
+		
+		comboBox.addActionListener (new ActionListener () {
+		    public void actionPerformed(ActionEvent e) {
+		        if(comboBox.getSelectedIndex()==2) {
+		        	cons_ComboBox.setVisible(false);
+		        	bills_ComboBox.setVisible(true);
+		        	
+		        }
+		    }
+		});
 		
 		JButton AddExpButton = new JButton("Add");
 		AddExpButton.setBackground(new Color(240, 110, 118));
@@ -232,14 +252,14 @@ public class Inc_Exp_GUI extends JFrame {
 				switch(selectedKind){
 				case "Consumable" :  System.out.println("Cons");
 					 amount = Double.parseDouble(ExpAmountField.getText());
-					Consumable cons = new Consumable(ExpTagField.getText(),amount);
+					Consumable cons = new Consumable(cons_ComboBox.getName(),amount);
 					logginUser.add_Expense(cons);
 					logginUser.print_Exp();
 				break;
 				
 				case "Bill" : System.out.println("Bil");
 					 amount = Double.parseDouble(ExpAmountField.getText());
-					Bill bill = new Bill(ExpTagField.getText(),amount);
+					Bill bill = new Bill(bills_ComboBox.getName(),amount);
 					logginUser.add_Expense(bill);
 					logginUser.print_Exp();
 				break;

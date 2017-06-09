@@ -14,7 +14,6 @@ public class Main {
 		ArrayList<User> UsersInit = new ArrayList<User>();
 		UsersInit.add(aUser);
 		
-		
 		try{
 			
 			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.ser");
