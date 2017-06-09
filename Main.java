@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		Income inc1 = new Income("misthos", 450,true,false);
+		/*Income inc1 = new Income("misthos", 450,true,false);
 		User aUser = new User("patakos","123",1233 );
-		aUser.add_Income(inc1);
-		ArrayList<User> UsersInit = new ArrayList<User>();
-		UsersInit.add(aUser);
+		aUser.add_Income(inc1);*/
+		ArrayList<User> users = new ArrayList<User>();
+		//users.add(aUser);
 		
 		try{
 			
 			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.ser");
 			
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(UsersInit);
+			out.writeObject(users);
 			out.close();
 			fileOut.close();
 			
@@ -31,7 +31,7 @@ public class Main {
 		}
 		
 		
-		new LoginGUI(); 
+		new LoginGUI(users); 
 	}
 
 }

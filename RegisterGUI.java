@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class RegisterGUI extends JFrame {
@@ -15,7 +16,7 @@ public class RegisterGUI extends JFrame {
 	private JTextField fullnameField;
 	private JTextField limitField;
 	User newUser;
-	public RegisterGUI() {
+	public RegisterGUI(ArrayList<User> users) {
 		
 		JPanel panel = new JPanel();
 		this.setSize(540,360);
@@ -85,6 +86,7 @@ public class RegisterGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			double limit = Double.parseDouble(limitField.getText());
 			User user = new User(usernameField.getText(),passwordField.getText(),limit);
+			users.add(user);
 			new MainGUI(user);
 			dispose();
 			}
@@ -97,7 +99,7 @@ public class RegisterGUI extends JFrame {
 		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
-				new LoginGUI();
+				new LoginGUI(users);
 			}
 		});
 		back_Button.setBounds(6, 282, 117, 29);

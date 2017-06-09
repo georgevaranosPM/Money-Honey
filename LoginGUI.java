@@ -20,16 +20,16 @@ import javax.swing.JTextField;
  public final  class LoginGUI extends JFrame{
 	private JTextField textField_USERNAME;
 	private JTextField textField_PASSWORD;
-	private ArrayList<User> Users = new ArrayList<User>();
-	public LoginGUI() {
-		
+	
+	public LoginGUI(ArrayList<User> users) {
+	
 		try{
 			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			ArrayList<User> list = (ArrayList<User>)in.readObject();
 			in.close();
 			fileIn.close();
-			Users.addAll(list);
+			users.addAll(list);
 
 		
 		}
@@ -40,7 +40,8 @@ import javax.swing.JTextField;
 		catch(ClassNotFoundException exc)
 		{
 			exc.printStackTrace();
-		}
+		
+		
 		
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -77,7 +78,7 @@ import javax.swing.JTextField;
 			public void actionPerformed(ActionEvent e) {
 				String UsernameText = textField_USERNAME.getText();
 				String PasswordText = textField_PASSWORD.getText();
-				for (User user : Users ){
+				for (User user : users ){
 					if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
 				       {	User loggedin_User=user;
 						new MainGUI(loggedin_User);
@@ -104,7 +105,7 @@ import javax.swing.JTextField;
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RegisterGUI();
+				new RegisterGUI(users);
 				disposeGUI();
 			}
 		});
@@ -114,7 +115,7 @@ import javax.swing.JTextField;
 		this.setVisible(true);
 		this.setSize(540, 360);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
+	}}
 
 	public  void disposeGUI(){
 		this.dispose();
