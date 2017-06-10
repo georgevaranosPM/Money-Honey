@@ -20,7 +20,24 @@ public class User implements Serializable {
 	}
 	
 	
-	
+	public ArrayList<Income> getIncomes() {
+		return incomes;
+	}
+
+
+
+	public ArrayList<Expense> getExpenses() {
+		return expenses;
+	}
+
+
+
+	public double getLimit() {
+		return limit;
+	}
+
+
+
 	public ArrayList<Estate> getEstates() {
 		return estates;
 	}

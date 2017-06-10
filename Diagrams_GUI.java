@@ -11,24 +11,62 @@ import org.jfree.data.general.DefaultPieDataset;
 
 
 public class Diagrams_GUI extends JFrame{
-	public Diagrams_GUI(int choice) {
+	public Diagrams_GUI(int choice, User logginuser) {
+		
+		double wage_Sum = 0;
+		double rent_Sum = 0;
+		double sales_Sum = 0;
+		double other_Sum = 0;
+		
+		double cons_Sum = 0;
+		double bills_Sum = 0;
+		double inc_Tax_Sum = 0;
+		double est_Tax_Sum = 0;
+		double veh_Tax_Sum = 0;
+		
+		double incomes_Sum = 0;
+		double expenses_Sum = 0;
+		
 		DefaultCategoryDataset incomes_Dataset = new DefaultCategoryDataset();
-		incomes_Dataset.addValue(212, "Classes", "JDK1.0");
-		incomes_Dataset.addValue(504, "Classes", "JDK1.1");
-		incomes_Dataset.addValue(1520, "Classes", "SDK1.2");
-		incomes_Dataset.addValue(1842, "Classes", "SDK1.3");
-		incomes_Dataset.addValue(2991, "Classes", "SDK1.4");
+		for(int i=0; i<logginuser.getIncomes().size(); i++) {
+			incomes_Sum =+ logginuser.getIncomes().get(i).getIn_amount();
+			if(logginuser.getIncomes().get(i).getIn_tag()=="Wage")
+				wage_Sum =+ logginuser.getIncomes().get(i).getIn_amount();
+			else if(logginuser.getIncomes().get(i).getIn_tag()=="Rent")
+				rent_Sum =+ logginuser.getIncomes().get(i).getIn_amount();
+			else if(logginuser.getIncomes().get(i).getIn_tag()=="Sales")
+				sales_Sum =+ logginuser.getIncomes().get(i).getIn_amount();
+			else if(logginuser.getIncomes().get(i).getIn_tag()=="Other")
+				other_Sum =+ logginuser.getIncomes().get(i).getIn_amount();
+		}
+		incomes_Dataset.addValue(wage_Sum, "Euro", "Wage");
+		incomes_Dataset.addValue(rent_Sum, "Euro", "Rent");
+		incomes_Dataset.addValue(sales_Sum, "Euro", "Sales");
+		incomes_Dataset.addValue(other_Sum, "Euro", "Other");
 		
 		DefaultCategoryDataset expenses_Dataset = new DefaultCategoryDataset();
-		expenses_Dataset.addValue(212, "Classes", "JDK1.0");
-		expenses_Dataset.addValue(504, "Classes", "JDK1.1");
-		expenses_Dataset.addValue(1520, "Classes", "SDK1.2");
-		expenses_Dataset.addValue(1842, "Classes", "SDK1.3");
-		expenses_Dataset.addValue(2991, "Classes", "SDK1.4");
+		for(int i=0; i<logginuser.getExpenses().size(); i++) {
+			expenses_Sum =+ logginuser.getExpenses().get(i).getEx_amount();
+			if(logginuser.getExpenses().get(i).getEx_tag()=="Consumable")
+				cons_Sum =+ logginuser.getExpenses().get(i).getEx_amount();
+			else if(logginuser.getExpenses().get(i).getEx_tag()=="Bill")
+				bills_Sum =+ logginuser.getExpenses().get(i).getEx_amount();
+			else if(logginuser.getExpenses().get(i).getEx_tag()=="   Income Tax")
+				inc_Tax_Sum =+ logginuser.getExpenses().get(i).getEx_amount();
+			else if(logginuser.getExpenses().get(i).getEx_tag()=="   Vehicle Tax")
+				veh_Tax_Sum =+ logginuser.getExpenses().get(i).getEx_amount();
+			else if(logginuser.getExpenses().get(i).getEx_tag()=="   Estate Tax")
+				est_Tax_Sum =+ logginuser.getExpenses().get(i).getEx_amount();
+		}
+		expenses_Dataset.addValue(cons_Sum, "Euro", "Consumables");
+		expenses_Dataset.addValue(bills_Sum, "Euro", "Bills");
+		expenses_Dataset.addValue(inc_Tax_Sum, "Euro", "Income Tax");
+		expenses_Dataset.addValue(est_Tax_Sum, "Euro", "Estate Tax");
+		expenses_Dataset.addValue(veh_Tax_Sum, "Euro", "Vehicle Tax");
 		
 		DefaultPieDataset pie_Dataset = new DefaultPieDataset( );
-		pie_Dataset.setValue( "Incomes" , 20);  
-		pie_Dataset.setValue( "Expenses" , 30);   
+		pie_Dataset.setValue( "Incomes" , incomes_Sum);  
+		pie_Dataset.setValue( "Expenses" , expenses_Sum);   
 		
 		JFreeChart incomes_Barchart = ChartFactory.createBarChart3D("Incomes Bar Chart of Last Month", "Type of Income", "Amount (euros)", incomes_Dataset, PlotOrientation.VERTICAL, false, true, false);
 		JFreeChart expenses_Barchart = ChartFactory.createBarChart3D("Expenses Bar Chart of Last Month", "Type of Expense", "Amount (euros)", expenses_Dataset, PlotOrientation.VERTICAL, false, true, false);

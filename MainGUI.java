@@ -148,7 +148,7 @@ public class MainGUI extends JFrame{
 		graphsBtn.setBackground(new Color(240, 110, 118));
 		graphsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new choose_DiagramGUI();
+				new choose_DiagramGUI(loggedin_User);
 			}
 		});
 		mainSouthPanel.add(graphsBtn);

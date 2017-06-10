@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class choose_DiagramGUI extends JFrame{
-	public choose_DiagramGUI() {
+	public choose_DiagramGUI(User logginuser) {
 		
 		JPanel choicePanel = new JPanel();
 		choicePanel.setBackground(new Color(75, 75, 100));
@@ -33,7 +33,7 @@ public class choose_DiagramGUI extends JFrame{
 		JButton btnPieChart = new JButton("Incomes-Expenses Pie Chart");
 		btnPieChart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Diagrams_GUI(3);
+				new Diagrams_GUI(3, logginuser);
 				close_GUI();
 			}
 		});
@@ -44,7 +44,7 @@ public class choose_DiagramGUI extends JFrame{
 		JButton btnIncomesBarChart = new JButton("Incomes Bar Chart");
 		btnIncomesBarChart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Diagrams_GUI(1);
+				new Diagrams_GUI(1, logginuser);
 				close_GUI();
 			}
 		});
@@ -55,7 +55,7 @@ public class choose_DiagramGUI extends JFrame{
 		JButton btnExpensesBarChart = new JButton("Expenses Bar Chart");
 		btnExpensesBarChart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Diagrams_GUI(2);
+				new Diagrams_GUI(2, logginuser);
 				close_GUI();
 			}
 		});
