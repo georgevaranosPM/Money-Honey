@@ -11,10 +11,30 @@ public class Main {
 		/*Income inc1 = new Income("misthos", 450,true,false);
 		User aUser = new User("patakos","123",1233 );
 		aUser.add_Income(inc1);*/
-		ArrayList<User> users = new ArrayList<User>();
+		ArrayList<User> AllUsers = new ArrayList<User>();
 		//users.add(aUser);
+        try{
+            FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+             AllUsers = (ArrayList<User>)in.readObject();
+            in.close();
+            fileIn.close();
+            //Users.addAll(list);
+
+        
+        }
+        catch(IOException exc)
+        {
+            exc.printStackTrace();
+        }
+        catch(ClassNotFoundException exc)
+        {
+            exc.printStackTrace();
+        }
+        new LoginGUI(AllUsers); 
+
 		
-		try{
+		/*try{
 			
 			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.ser");
 			
@@ -28,10 +48,10 @@ public class Main {
 		catch(IOException exc)
 		{
 			exc.printStackTrace();
-		}
+		}*/
 		
 		
-		new LoginGUI(users); 
+		 
 	}
 
 }

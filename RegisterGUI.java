@@ -1,22 +1,28 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class RegisterGUI extends JFrame {
 	private JTextField usernameField;
 	private JTextField passwordField;
 	private JTextField fullnameField;
 	private JTextField limitField;
-	User newUser;
-	public RegisterGUI(ArrayList<User> users) {
+	private ArrayList<User> Users;
+	
+	public RegisterGUI(ArrayList<User> allUsers) {
+		this.Users=allUsers;
 		
 		JPanel panel = new JPanel();
 		this.setSize(540,360);
@@ -86,8 +92,11 @@ public class RegisterGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			double limit = Double.parseDouble(limitField.getText());
 			User user = new User(usernameField.getText(),passwordField.getText(),limit);
-			users.add(user);
-			new MainGUI(user);
+			Users.add(user);
+            for(User user1 : Users)
+                System.out.println("Name " + user1.getUsername());
+
+			new MainGUI(user,Users);
 			dispose();
 			}
 		});
@@ -99,7 +108,7 @@ public class RegisterGUI extends JFrame {
 		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
-				new LoginGUI(users);
+				new LoginGUI(Users);
 			}
 		});
 		back_Button.setBounds(6, 282, 117, 29);
@@ -107,7 +116,26 @@ public class RegisterGUI extends JFrame {
 		
 		this.setVisible(true);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
+try{
+            
+            FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.bin");
+            
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(Users);
+            out.close();
+            fileOut.close();
+            
+            System.out.println("Serialization succeded!");
+        }
+        catch(IOException exc)
+        {
+            exc.printStackTrace();
+        }
+    }
+    
+    
+
+	
 	
 	protected void close_GUI() {
 		this.dispose();

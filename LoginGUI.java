@@ -20,16 +20,18 @@ import javax.swing.JTextField;
  public final  class LoginGUI extends JFrame{
 	private JTextField textField_USERNAME;
 	private JTextField textField_PASSWORD;
+	private ArrayList<User> Users;
 	
-	public LoginGUI(ArrayList<User> users) {
+	public LoginGUI(ArrayList<User> AllUsers) {
+		this.Users=AllUsers;
 	
 		try{
 			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			ArrayList<User> list = (ArrayList<User>)in.readObject();
+			AllUsers = (ArrayList<User>)in.readObject();
 			in.close();
 			fileIn.close();
-			users.addAll(list);
+			//users.addAll(list);
 
 		
 		}
@@ -40,6 +42,7 @@ import javax.swing.JTextField;
 		catch(ClassNotFoundException exc)
 		{
 			exc.printStackTrace();
+		}
 		
 		
 		
@@ -78,11 +81,21 @@ import javax.swing.JTextField;
 			public void actionPerformed(ActionEvent e) {
 				String UsernameText = textField_USERNAME.getText();
 				String PasswordText = textField_PASSWORD.getText();
-				for (User user : users ){
-					if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
-				       {	User loggedin_User=user;
-						new MainGUI(loggedin_User);
-				       	disposeGUI();break;}
+		        btnLogin.setBounds(250, 197, 84, 29);
+                for(User user: Users)
+                    System.out.println("Name " + user.getUsername());
+                
+                for (User user : Users ){
+                    
+                /*    if (Users.isEmpty())
+                        {JOptionPane.showMessageDialog(panel,
+                                "There are no loggin Users");}*/
+                     if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
+                       {    User loggedin_User=user;
+                        new MainGUI(loggedin_User,Users);
+                        dispose();break;
+                        }
+
 					else JOptionPane.showMessageDialog(panel,
 						    "User "+UsernameText+" does not exist!");}}
 			});
@@ -105,7 +118,7 @@ import javax.swing.JTextField;
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RegisterGUI(users);
+				new RegisterGUI(Users);
 				disposeGUI();
 			}
 		});
@@ -115,7 +128,7 @@ import javax.swing.JTextField;
 		this.setVisible(true);
 		this.setSize(540, 360);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}}
+	}
 
 	public  void disposeGUI(){
 		this.dispose();

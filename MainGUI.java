@@ -18,8 +18,10 @@ public class MainGUI extends JFrame{
 	
 	private Date from_Date;
 	private Date to_Date;
+	private ArrayList<User> Users;
 	
-	public MainGUI(User loggedin_User) {
+	public MainGUI(User loggedin_User,ArrayList<User> allUsers) {
+		this.Users=allUsers;
 		
 		getContentPane().setLayout(null);
 		
@@ -180,7 +182,7 @@ public class MainGUI extends JFrame{
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
-				new editGUI(loggedin_User);
+				new editGUI(loggedin_User,Users);
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
@@ -190,13 +192,13 @@ public class MainGUI extends JFrame{
 		logOutBtn.setBounds(427, 32, 107, 29);
 
 		logOutBtn.setBackground(new Color(240, 110, 118));
-		/*logOutBtn.addActionListener(new ActionListener() {
+		logOutBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
 				LoginGUI.SaveStatus(Users);
-				new LoginGUI();
+				new LoginGUI(Users);
 			}
-		});*/
+		});
 		mainNorthPanel.add(logOutBtn);
 		mainNorthPanel.setBackground(new Color(75, 75, 100));
 		
