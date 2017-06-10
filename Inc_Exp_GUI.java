@@ -274,11 +274,14 @@ public class Inc_Exp_GUI extends JFrame {
 				break;
 				}
 				double sum = 0;
+				boolean once_Shown = false;
 				for(int i=0; i<logginUser.getExpenses().size(); i++) {
 					sum =+ logginUser.getExpenses().get(i).getEx_amount();
 				}
-				if(logginUser.getLimit()<sum)
-					JOptionPane.showMessageDialog(getContentPane(), "You just exceeded your monthly limit!");
+				if(logginUser.getLimit()<sum && !(once_Shown)) {
+					JOptionPane.showMessageDialog(getContentPane(), "You exceeded your monthly limit!");
+					once_Shown = true;
+				}
 				dispose();
 		}});
 		

@@ -133,19 +133,25 @@ public class editGUI extends JFrame{
 		limit_Field.setColumns(10);
 		limit_Field.setEditable(false);
 		
-		JComboBox estates_Field = new JComboBox();
-		estates_Field.setBackground(new Color(240, 110, 118));
-		estates_Field.setModel(new DefaultComboBoxModel(new String[] {"spiti 1", "spiti 2"}));
-		estates_Field.setSelectedIndex(-1);
-		estates_Field.setBounds(160, 223, 130, 27);
-		getContentPane().add(estates_Field);
+		String[] est = new String[logginUser.getEstates().size()];
+		for(int i=0; i<logginUser.getEstates().size(); i++) {
+			est[i] = logginUser.getEstates().get(i).getAddress();
+		}
+		JComboBox estates_comboBox = new JComboBox(est);
+		estates_comboBox.setBounds(160, 223, 130, 27);
+		estates_comboBox.setBackground(new Color(240, 110, 118));
+		estates_comboBox.setSelectedIndex(-1);
+		getContentPane().add(estates_comboBox);
 		
-		JComboBox vehicles_Field = new JComboBox();
-		vehicles_Field.setBackground(new Color(240, 110, 118));
-		vehicles_Field.setModel(new DefaultComboBoxModel(new String[] {"karo 1", "karo 2"}));
-		vehicles_Field.setSelectedIndex(-1);
-		vehicles_Field.setBounds(160, 188, 130, 27);
-		getContentPane().add(vehicles_Field);
+		String[] veh = new String[logginUser.getVehicles().size()];
+		for(int i=0; i<logginUser.getVehicles().size(); i++) {
+			veh[i] = logginUser.getVehicles().get(i).getVeh_id();
+		}
+		JComboBox vehicles_comboBox = new JComboBox(veh);
+		vehicles_comboBox.setBounds(160, 188, 130, 27);
+		vehicles_comboBox.setBackground(new Color(240, 110, 118));
+		vehicles_comboBox.setSelectedIndex(-1);
+		getContentPane().add(vehicles_comboBox);
 		
 		JButton end_Btn = new JButton("Complete");
 	end_Btn.addActionListener(new ActionListener() {
