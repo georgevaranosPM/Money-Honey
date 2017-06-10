@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
+import javax.swing.Icon;
 
 public class editGUI extends JFrame{
 	private JTextField username_Field;
@@ -183,24 +184,26 @@ public class editGUI extends JFrame{
 		
 		ImageIcon add = new ImageIcon ("/Users/GeorgeVaranos/Money-Honey/add.png");
 		
-		JButton add_Veh_Btn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Money-Honey/add.png"));
+		JButton add_Veh_Btn = new JButton((Icon) null);
+		add_Veh_Btn.setText("+");
 		add_Veh_Btn.setBackground(new Color(240, 110, 118));
 		add_Veh_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new add_VehicleGUI(logginUser);
 			}
 		});
-		add_Veh_Btn.setBounds(295, 160, 25, 25);
+		add_Veh_Btn.setBounds(295, 159, 38, 25);
 		getContentPane().add(add_Veh_Btn);
 		
-		JButton add_Estate_Btn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Money-Honey/add.png"));
+		JButton add_Estate_Btn = new JButton((Icon) null);
+		add_Estate_Btn.setText("+");
 		add_Estate_Btn.setBackground(new Color(240, 110, 118));
 		add_Estate_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new add_EstateGUI(logginUser);
 			}
 		});
-		add_Estate_Btn.setBounds(295, 194, 25, 25);
+		add_Estate_Btn.setBounds(295, 194, 38, 25);
 		getContentPane().add(add_Estate_Btn);
 		
 	}

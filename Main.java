@@ -1,3 +1,10 @@
+/*Program: Money Honey
+Το λογισμικο λειτουργει βασει των ΕΠΑΛ και ΕΠΣΛ εκτος απο:
+-τη δυνατοτητα επιλογης ευρους ημερομηνιων για την εμφανιση εσοδων-εξοδων στην κεντρικη λιστα
+-την επεξεργασια καποιας καταχωρησης (υπαρχει μονο η δυνατοτητα διαγραφης)
+-μερικες εικονες ενδεχεται να μην προβαλλονται
+-το ισοζυγιο (αποτελεσμα) μεταξυ εσοδων και εξοδων που θα εμφανιζοταν στην αρχικη κατω απο τις λιστες
+*/
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,8 +25,6 @@ public class Main {
              AllUsers = (ArrayList<User>)in.readObject();
             in.close();
             fileIn.close();
-           
-
         
         }
         catch(EOFException eof){

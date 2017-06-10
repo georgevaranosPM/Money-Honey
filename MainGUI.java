@@ -19,7 +19,6 @@ public class MainGUI extends JFrame{
 	private Date from_Date;
 	private Date to_Date;
 	private ArrayList<User> Users;
-	private JTextField result_Field;
 	
 	public MainGUI(User logginUser,ArrayList<User> allUsers) {
 		this.Users=allUsers;
@@ -44,7 +43,7 @@ public class MainGUI extends JFrame{
 		}
 		Inc_List.setModel(listModel);
 		
-		Inc_List.setBounds(6, 71, 144, 140);
+		Inc_List.setBounds(6, 71, 144, 164);
 		mainPanel.add(Inc_List);
 		
 		
@@ -58,7 +57,7 @@ public class MainGUI extends JFrame{
 		}
 		Exp_List.setModel(listModel1);
 		
-		Exp_List.setBounds(159, 71, 144, 140);
+		Exp_List.setBounds(159, 71, 144, 164);
 		mainPanel.add(Exp_List);
 		
 
@@ -102,18 +101,6 @@ public class MainGUI extends JFrame{
 		lblExpenses.setBounds(246, 50, 65, 15);
 		lblExpenses.setForeground(new Color(230, 255, 255));
 		mainPanel.add(lblExpenses);
-
-		result_Field = new JTextField();
-		result_Field.setBounds(157, 217, 55, 23);
-		result_Field.setEditable(false);
-		result_Field.setText(String.valueOf(getResult(logginUser)));
-		mainPanel.add(result_Field);
-		result_Field.setColumns(10);
-		
-		JLabel lblResult = new JLabel("Result");
-		lblResult.setBounds(112, 223, 41, 15);
-		lblResult.setForeground(new Color(230, 255, 255));
-		mainPanel.add(lblResult);
 		
 			
 			///////Right Panel////////
@@ -130,7 +117,6 @@ public class MainGUI extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					logginUser.getIncomes().remove(Inc_List.getSelectedIndex());
 					listModel.remove(Inc_List.getSelectedIndex());
-					result_Field.setText(String.valueOf(getResult(logginUser)));
 				}
 			});
 			
@@ -145,7 +131,6 @@ public class MainGUI extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					logginUser.getExpenses().remove(Exp_List.getSelectedIndex());
 					listModel1.remove(Exp_List.getSelectedIndex());
-					result_Field.setText(String.valueOf(getResult(logginUser)));
 				}
 			});
 			mainRightPanel.add(delete_Exp_Btn);
@@ -226,21 +211,19 @@ public class MainGUI extends JFrame{
 		///////Left Panel////////
 		JPanel mainLeftPanel = new JPanel();
 		mainLeftPanel.setBounds(0, 58, 110, 241);
-		FlowLayout flowLayout = (FlowLayout) mainLeftPanel.getLayout();
-		flowLayout.setVgap(90);
-		flowLayout.setHgap(0);
 		getContentPane().add(mainLeftPanel);
 		mainLeftPanel.setBackground(new Color(75, 75, 100));
 		
-		JButton sbmtBtn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Documents/workspace/Money Honey/bin/add_Btn.png"));
+		JButton sbmtBtn = new JButton("+");
+		sbmtBtn.setBounds(36, 90, 38, 35);
 		sbmtBtn.setBackground(new Color(240, 110, 118));
-		sbmtBtn.setBounds(427, 32, 107, 29);
 		sbmtBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Inc_Exp_GUI(logginUser,Users);
 				close_GUI();
 			}
 		});
+		mainLeftPanel.setLayout(null);
 		mainLeftPanel.add(sbmtBtn);
 		
 		this.setVisible(true);
@@ -250,20 +233,5 @@ public class MainGUI extends JFrame{
 	
 	protected void close_GUI() {
 		this.dispose();
-	}
-	
-	public double getResult(User logginUser) {
-		double expenses_Sum = 0;
-		double incomes_Sum = 0;
-		
-		for(int i=0; i<logginUser.getExpenses().size(); i++) {
-			expenses_Sum =+ logginUser.getExpenses().get(i).getEx_amount();
-		}
-		
-		for(int i=0; i<logginUser.getIncomes().size(); i++) {
-			incomes_Sum =+ logginUser.getIncomes().get(i).getIn_amount();
-		}
-		
-		return (incomes_Sum-expenses_Sum);
 	}
 }
