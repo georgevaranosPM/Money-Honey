@@ -6,19 +6,15 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Main {
-
+//TESSSSSSSSSSSSSSSSSSSSSSSSSSSt
 	public static void main(String[] args) {
 		/*Income inc1 = new Income("misthos", 450,true,false);
 		User aUser = new User("patakos","123",1233 );
 		aUser.add_Income(inc1);*/
-<<<<<<< HEAD
+
 		ArrayList<User> AllUsers = new ArrayList<User>();
 		//UsersInit.add(aUser);
-=======
-		ArrayList<User> users = new ArrayList<User>();
-		//users.add(aUser);
-		
->>>>>>> master
+
 		try{
 			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -61,10 +57,7 @@ public class Main {
 		
 		
 		
-<<<<<<< HEAD
-=======
-		new LoginGUI(users); 
->>>>>>> master
+
 	}
 
 }
