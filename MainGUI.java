@@ -101,9 +101,9 @@ public class MainGUI extends JFrame{
 		lblExpenses.setBounds(246, 50, 65, 15);
 		lblExpenses.setForeground(new Color(230, 255, 255));
 		mainPanel.add(lblExpenses);
-<<<<<<< HEAD
 
-		result_Field = new JTextField();
+
+		JTextField result_Field = new JTextField();
 		result_Field.setBounds(157, 217, 55, 23);
 		result_Field.setEditable(false);
 		result_Field.setText(Double.toString(logginUser.getResult()));
@@ -114,8 +114,7 @@ public class MainGUI extends JFrame{
 		lblResult.setBounds(112, 223, 41, 15);
 		lblResult.setForeground(new Color(230, 255, 255));
 		mainPanel.add(lblResult);
-=======
->>>>>>> 00d731ff8dc678308aa521df0090b9362beb85a2
+
 		
 			
 			///////Right Panel////////
@@ -132,10 +131,9 @@ public class MainGUI extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					logginUser.getIncomes().remove(Inc_List.getSelectedIndex());
 					listModel.remove(Inc_List.getSelectedIndex());
-<<<<<<< HEAD
+
 					result_Field.setText(Double.toString(logginUser.getResult()));
-=======
->>>>>>> 00d731ff8dc678308aa521df0090b9362beb85a2
+
 				}
 			});
 			
@@ -150,10 +148,9 @@ public class MainGUI extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					logginUser.getExpenses().remove(Exp_List.getSelectedIndex());
 					listModel1.remove(Exp_List.getSelectedIndex());
-<<<<<<< HEAD
+
 					result_Field.setText(Double.toString(logginUser.getResult()));
-=======
->>>>>>> 00d731ff8dc678308aa521df0090b9362beb85a2
+
 				}
 			});
 			mainRightPanel.add(delete_Exp_Btn);
@@ -257,9 +254,8 @@ public class MainGUI extends JFrame{
 	protected void close_GUI() {
 		this.dispose();
 	}
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> 00d731ff8dc678308aa521df0090b9362beb85a2
 }
+
+	
+	
+
