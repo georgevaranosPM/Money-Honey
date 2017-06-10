@@ -249,7 +249,7 @@ public class Inc_Exp_GUI extends JFrame {
 				switch(selectedKind){
 				case "Consumable" :  //System.out.println("Cons");
 					amount = Double.parseDouble(ExpAmountField.getText());
-					Consumable new_Cons = new Consumable(cons_ComboBox.getSelectedItem().toString(), amount);
+					Consumable new_Cons = new Consumable(comboBox.getSelectedItem().toString(), amount);
 					logginUser.add_Expense(new_Cons);
 					if(logginUser.checklimit(logginUser.getLimit())==1){
 						JOptionPane.showMessageDialog(getContentPane(), "You have exceeded your monthly limit!");
@@ -259,7 +259,7 @@ public class Inc_Exp_GUI extends JFrame {
 				
 				case "Bill" : //System.out.println("Bil");
 					amount = Double.parseDouble(ExpAmountField.getText());
-					Bill new_Bill = new Bill(bills_ComboBox.getSelectedItem().toString(), amount);
+					Bill new_Bill = new Bill(comboBox.getSelectedItem().toString(), amount);
 					logginUser.add_Expense(new_Bill);
 					if(logginUser.checklimit(logginUser.getLimit())==1){
 						JOptionPane.showMessageDialog(getContentPane(), "You have exceeded your monthly limit!");

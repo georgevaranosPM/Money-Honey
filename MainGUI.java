@@ -43,7 +43,7 @@ public class MainGUI extends JFrame{
 		}
 		Inc_List.setModel(listModel);
 		
-		Inc_List.setBounds(6, 71, 144, 164);
+		Inc_List.setBounds(6, 71, 144, 145);
 		mainPanel.add(Inc_List);
 		
 		
@@ -57,7 +57,7 @@ public class MainGUI extends JFrame{
 		}
 		Exp_List.setModel(listModel1);
 		
-		Exp_List.setBounds(159, 71, 144, 164);
+		Exp_List.setBounds(159, 71, 144, 145);
 		mainPanel.add(Exp_List);
 		
 
@@ -104,7 +104,7 @@ public class MainGUI extends JFrame{
 
 
 		JTextField result_Field = new JTextField();
-		result_Field.setBounds(157, 217, 55, 23);
+		result_Field.setBounds(157, 219, 55, 23);
 		result_Field.setEditable(false);
 		result_Field.setText(Double.toString(logginUser.getResult()));
 		mainPanel.add(result_Field);

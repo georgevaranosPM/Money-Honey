@@ -38,6 +38,11 @@ public class User implements Serializable {
 
 
 
+	public void setLimit(double limit) {
+		this.limit = limit;
+	}
+
+
 	public ArrayList<Estate> getEstates() {
 		return estates;
 	}

@@ -90,9 +90,10 @@ public class RegisterGUI extends JFrame {
 		end_Btn.setBackground(new Color(240, 110, 118));
 		end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			//double limit = Double.parseDouble(limitField.getText());
+			double limit = Double.parseDouble(limitField.getText());
 			User user = new User(usernameField.getText(),passwordField.getText(),Double.parseDouble(limitField.getText()));
 			Users.add(user);
+			user.setLimit(limit);
             for(User user1 : Users)
                 System.out.println("Name " + user1.getUsername());
 
