@@ -20,8 +20,11 @@ public class editGUI extends JFrame{
 	private JTextField password_Field;
 	private JTextField name_Field;
 	private JTextField limit_Field;
+	private ArrayList<User> Users;
 	
-	public editGUI(User logginUser ) {
+	public editGUI(User logginUser,ArrayList<User> allUsers ) {
+		
+		this.Users=allUsers;
 		
 		this.setVisible(true);
 		this.setSize(540, 360);
@@ -149,7 +152,7 @@ public class editGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				close_GUI();
-				new MainGUI(logginUser);
+				new MainGUI(logginUser,Users);
 			}
 		});
 		end_Btn.setBounds(417, 303, 117, 29);

@@ -8,18 +8,37 @@ import java.util.ArrayList;
 public class Main {
 
 	public static void main(String[] args) {
-		Income inc1 = new Income("misthos", 450,true,false);
+		/*Income inc1 = new Income("misthos", 450,true,false);
 		User aUser = new User("patakos","123",1233 );
-		aUser.add_Income(inc1);
-		ArrayList<User> UsersInit = new ArrayList<User>();
-		UsersInit.add(aUser);
-		
+		aUser.add_Income(inc1);*/
+		ArrayList<User> AllUsers = new ArrayList<User>();
+		//UsersInit.add(aUser);
 		try{
+			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			 AllUsers = (ArrayList<User>)in.readObject();
+			in.close();
+			fileIn.close();
+			//Users.addAll(list);
+
+		
+		}
+		catch(IOException exc)
+		{
+			exc.printStackTrace();
+		}
+		catch(ClassNotFoundException exc)
+		{
+			exc.printStackTrace();
+		}
+		new LoginGUI(AllUsers); 
+		
+		/*try{
 			
-			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.ser");
+			FileOutputStream fileOut = new FileOutputStream("MoneyHoneyDB.bin");
 			
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(UsersInit);
+			out.writeObject(AllUsers);
 			out.close();
 			fileOut.close();
 			
@@ -28,10 +47,10 @@ public class Main {
 		catch(IOException exc)
 		{
 			exc.printStackTrace();
-		}
+		}*/
 		
 		
-		new LoginGUI(); 
+		
 	}
 
 }

@@ -21,15 +21,18 @@ import javax.swing.JTextField;
 	private JTextField textField_USERNAME;
 	private JTextField textField_PASSWORD;
 	private ArrayList<User> Users = new ArrayList<User>();
-	public LoginGUI() {
+	
+	public LoginGUI(  ArrayList<User> AllUsers) {
+		
+		this.Users=AllUsers;
 		
 		try{
 			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
-			ArrayList<User> list = (ArrayList<User>)in.readObject();
+			 AllUsers = (ArrayList<User>)in.readObject();
 			in.close();
 			fileIn.close();
-			Users.addAll(list);
+			//Users.addAll(list);
 
 		
 		}
@@ -75,12 +78,18 @@ import javax.swing.JTextField;
 		btnLogin.setBounds(250, 197, 84, 29);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				for(User user: Users)
+					System.out.println("Name " + user.getUsername());
 				String UsernameText = textField_USERNAME.getText();
 				String PasswordText = textField_PASSWORD.getText();
 				for (User user : Users ){
-					if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
+					
+				/*	if (Users.isEmpty())
+						{JOptionPane.showMessageDialog(panel,
+							    "There are no loggin Users");}*/
+					 if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
 				       {	User loggedin_User=user;
-						new MainGUI(loggedin_User);
+						new MainGUI(loggedin_User,Users);
 				       	disposeGUI();break;}
 					else JOptionPane.showMessageDialog(panel,
 						    "User "+UsernameText+" does not exist!");}}
@@ -104,7 +113,7 @@ import javax.swing.JTextField;
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RegisterGUI();
+				new RegisterGUI(Users);
 				disposeGUI();
 			}
 		});
