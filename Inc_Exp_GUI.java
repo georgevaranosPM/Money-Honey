@@ -119,22 +119,20 @@ public class Inc_Exp_GUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				boolean taxed = true;
+				boolean taxed = false;
 				boolean monthly = false;
 				double amount = Double.parseDouble(IncAmountField.getText());
 				
 				if (TaxedcheckBox.isSelected()){
 					 taxed = true;
-					
 				}
 				else if (ConstantcheckBox.isSelected()){
-					
 					 monthly = true;
 				}
-				Income income = new Income(income_comboBox.getSelectedItem().toString(), amount,monthly,taxed);
+				Income income = new Income(income_comboBox.getSelectedItem().toString(), amount, monthly, taxed);
 				logginUser.add_Income(income);
 				logginUser.print_Inc();
-				
+				dispose();
 			}
 			
 		});
@@ -243,24 +241,45 @@ public class Inc_Exp_GUI extends JFrame {
 				String selectedKind = (String) comboBox.getSelectedItem();
 				double amount;
 				switch(selectedKind){
-				case "Consumable" :  System.out.println("Cons");
-					 amount = Double.parseDouble(ExpAmountField.getText());
-					Consumable cons = new Consumable(cons_ComboBox.getSelectedItem().toString(),amount);
-					logginUser.add_Expense(cons);
+				case "Consumable" :  //System.out.println("Cons");
+					amount = Double.parseDouble(ExpAmountField.getText());
+					Consumable new_Cons = new Consumable(cons_ComboBox.getSelectedItem().toString(), amount);
+					logginUser.add_Expense(new_Cons);
 					logginUser.print_Exp();
 				break;
 				
-				case "Bill" : System.out.println("Bil");
-					 amount = Double.parseDouble(ExpAmountField.getText());
-					Bill bill = new Bill(bills_ComboBox.getSelectedItem().toString(),amount);
-					logginUser.add_Expense(bill);
+				case "Bill" : //System.out.println("Bil");
+					amount = Double.parseDouble(ExpAmountField.getText());
+					Bill new_Bill = new Bill(bills_ComboBox.getSelectedItem().toString(), amount);
+					logginUser.add_Expense(new_Bill);
 					logginUser.print_Exp();
 				break;
 				
-				case "Tax" : System.out.println("Tx"); break;
+				case "   Income Tax" : //System.out.println("Tx"); 
+					amount = Double.parseDouble(ExpAmountField.getText());
+					Tax new_inc_Tax = new Tax("Income Tax" , amount);
+					logginUser.add_Expense(new_inc_Tax);
+				break;
 				
-			}
-			
+				case "   Estate Tax" : //System.out.println("Tx"); 
+					amount = Double.parseDouble(ExpAmountField.getText());
+					Tax new_est_Tax = new Tax(estates_comboBox.getSelectedItem().toString() , amount);
+					logginUser.add_Expense(new_est_Tax);
+				break;
+				
+				case "   Vehicle Tax" : //System.out.println("Tx"); 
+					amount = Double.parseDouble(ExpAmountField.getText());
+					Tax new_veh_Tax = new Tax(vehicles_comboBox.getSelectedItem().toString() , amount);
+					logginUser.add_Expense(new_veh_Tax);
+				break;
+				}
+				double sum = 0;
+				for(int i=0; i<logginUser.getExpenses().size(); i++) {
+					sum =+ logginUser.getExpenses().get(i).getEx_amount();
+				}
+				if(logginUser.getLimit()<sum)
+					JOptionPane.showMessageDialog(getContentPane(), "You just exceeded your monthly limit!");
+				dispose();
 		}});
 		
 		JButton ExpBackButton = new JButton("Back");
@@ -269,8 +288,8 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpPanel.add(ExpBackButton);
 		
 		
-		JButton btnNewButton = new JButton("Go!");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton  go_Button = new JButton("Go!");
+		go_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(comboBox.getSelectedIndex()==0) {
 					estates_comboBox.setVisible(false);
@@ -313,8 +332,8 @@ public class Inc_Exp_GUI extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(146, 69, 54, 25);
-		ExpPanel.add(btnNewButton);
+		go_Button.setBounds(146, 69, 54, 25);
+		ExpPanel.add(go_Button);
 		
 		//ActionListenr tou ExpButton
 		ExpButton.addActionListener(new ActionListener(){
