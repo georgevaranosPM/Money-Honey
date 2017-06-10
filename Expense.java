@@ -37,13 +37,7 @@ public class Expense implements Serializable {
 	}
 
 
-//Ayto nomizw kalutera prepei na paei ston User
-	public boolean check_Limit(double sum, double limit) {
-		
-		boolean passed = false;
-		
-		return passed;
-	}
+
 	
 	public void add_newDefault(Expense newExp) {
 

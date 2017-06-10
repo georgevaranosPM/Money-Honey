@@ -106,7 +106,7 @@ public class MainGUI extends JFrame{
 		result_Field = new JTextField();
 		result_Field.setBounds(157, 217, 55, 23);
 		result_Field.setEditable(false);
-		result_Field.setText(String.valueOf(getResult(logginUser)));
+		result_Field.setText(Double.toString(logginUser.getResult()));
 		mainPanel.add(result_Field);
 		result_Field.setColumns(10);
 		
@@ -130,7 +130,7 @@ public class MainGUI extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					logginUser.getIncomes().remove(Inc_List.getSelectedIndex());
 					listModel.remove(Inc_List.getSelectedIndex());
-					result_Field.setText(String.valueOf(getResult(logginUser)));
+					result_Field.setText(Double.toString(logginUser.getResult()));
 				}
 			});
 			
@@ -145,7 +145,7 @@ public class MainGUI extends JFrame{
 				public void actionPerformed(ActionEvent e) {
 					logginUser.getExpenses().remove(Exp_List.getSelectedIndex());
 					listModel1.remove(Exp_List.getSelectedIndex());
-					result_Field.setText(String.valueOf(getResult(logginUser)));
+					result_Field.setText(Double.toString(logginUser.getResult()));
 				}
 			});
 			mainRightPanel.add(delete_Exp_Btn);
@@ -252,18 +252,5 @@ public class MainGUI extends JFrame{
 		this.dispose();
 	}
 	
-	public double getResult(User logginUser) {
-		double expenses_Sum = 0;
-		double incomes_Sum = 0;
-		
-		for(int i=0; i<logginUser.getExpenses().size(); i++) {
-			expenses_Sum =+ logginUser.getExpenses().get(i).getEx_amount();
-		}
-		
-		for(int i=0; i<logginUser.getIncomes().size(); i++) {
-			incomes_Sum =+ logginUser.getIncomes().get(i).getIn_amount();
-		}
-		
-		return (incomes_Sum-expenses_Sum);
-	}
+	
 }

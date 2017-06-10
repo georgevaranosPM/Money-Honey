@@ -251,14 +251,19 @@ public class Inc_Exp_GUI extends JFrame {
 					amount = Double.parseDouble(ExpAmountField.getText());
 					Consumable new_Cons = new Consumable(cons_ComboBox.getSelectedItem().toString(), amount);
 					logginUser.add_Expense(new_Cons);
-					logginUser.print_Exp();
+					if(logginUser.checklimit(logginUser.getLimit())==1){
+						JOptionPane.showMessageDialog(getContentPane(), "You have exceeded your monthly limit!");
+					}
+				
 				break;
 				
 				case "Bill" : //System.out.println("Bil");
 					amount = Double.parseDouble(ExpAmountField.getText());
 					Bill new_Bill = new Bill(bills_ComboBox.getSelectedItem().toString(), amount);
 					logginUser.add_Expense(new_Bill);
-					logginUser.print_Exp();
+					if(logginUser.checklimit(logginUser.getLimit())==1){
+						JOptionPane.showMessageDialog(getContentPane(), "You have exceeded your monthly limit!");
+					}
 				break;
 				
 				case "   Income Tax" : //System.out.println("Tx"); 
@@ -280,9 +285,9 @@ public class Inc_Exp_GUI extends JFrame {
 				break;
 				}
 
-				if(logginUser.checklimit()){
+				/*if(logginUser.checklimit()){
 					JOptionPane.showMessageDialog(getContentPane(), "You have exceeded your monthly limit!");
-				}
+				}*/
 				new MainGUI(logginUser, Users);
 				dispose();
 		}});

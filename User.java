@@ -114,17 +114,33 @@ public class User implements Serializable {
 		return charge;
 	}
 	
-	public boolean checklimit(){
-		boolean overlimit = false;
-		double sum = 0;
-		
+	public int checklimit(double limit){
+		int done=0;
+		double sum=0;
 		for(Expense expense : expenses){
-			sum =+ expense.getEx_amount();
+			sum+=expense.getEx_amount();
 		}
+		System.out.println("sum" + sum);
+		System.out.println("limit" + limit);
+		if(limit<sum){
+			done=1;
+		}
+		return done;
 		
-		if(limit<sum)
-			overlimit=true;
-		return overlimit;
+	}
+	public double getResult(){
+		double result=0;
+		double expSum = 0;
+		double incSum=0;
+		
+		for(Income income : incomes){
+			incSum += income.getIn_amount();
+		}
+		for(Expense expense : expenses){
+			expSum += expense.getEx_amount();
+		}
+		result=incSum-expSum;
+		return result;
 	}
 
 
