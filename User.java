@@ -117,9 +117,11 @@ public class User implements Serializable {
 	public boolean checklimit(){
 		boolean overlimit = false;
 		double sum = 0;
+		
 		for(Expense expense : expenses){
-			sum = sum+ expense.getEx_amount();
+			sum =+ expense.getEx_amount();
 		}
+		
 		if(limit<sum)
 			overlimit=true;
 		return overlimit;

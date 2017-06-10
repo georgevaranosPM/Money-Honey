@@ -137,7 +137,8 @@ public class Inc_Exp_GUI extends JFrame {
 				Income income = new Income(income_comboBox.getSelectedItem().toString(), amount, monthly, taxed);
 				logginUser.add_Income(income);
 				logginUser.print_Inc();
-				
+				new MainGUI(logginUser, Users);
+				dispose();
 			}
 			
 		});
@@ -243,19 +244,19 @@ public class Inc_Exp_GUI extends JFrame {
 		//ActionListener gia th kataxwrhsh eksodou
 		AddExpButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				String selectedKind = (String) comboBox.getSelectedItem();
+				String selectedKind = comboBox.getSelectedItem().toString();
 				double amount;
 				switch(selectedKind){
 				case "Consumable" :  //System.out.println("Cons");
 					amount = Double.parseDouble(ExpAmountField.getText());
-					Consumable new_Cons = new Consumable(cons_ComboBox.getSelectedItem().toString(), amount);
+					Consumable new_Cons = new Consumable(comboBox.getSelectedItem().toString(), amount);
 					logginUser.add_Expense(new_Cons);
 					logginUser.print_Exp();
 				break;
 				
 				case "Bill" : //System.out.println("Bil");
 					amount = Double.parseDouble(ExpAmountField.getText());
-					Bill new_Bill = new Bill(bills_ComboBox.getSelectedItem().toString(), amount);
+					Bill new_Bill = new Bill(comboBox.getSelectedItem().toString(), amount);
 					logginUser.add_Expense(new_Bill);
 					logginUser.print_Exp();
 				break;
@@ -268,30 +269,22 @@ public class Inc_Exp_GUI extends JFrame {
 				
 				case "   Estate Tax" : //System.out.println("Tx"); 
 					amount = Double.parseDouble(ExpAmountField.getText());
-					Tax new_est_Tax = new Tax(estates_comboBox.getSelectedItem().toString() , amount);
+					Tax new_est_Tax = new Tax(comboBox.getSelectedItem().toString() , amount);
 					logginUser.add_Expense(new_est_Tax);
 				break;
 				
 				case "   Vehicle Tax" : //System.out.println("Tx"); 
 					amount = Double.parseDouble(ExpAmountField.getText());
-					Tax new_veh_Tax = new Tax(vehicles_comboBox.getSelectedItem().toString() , amount);
+					Tax new_veh_Tax = new Tax(comboBox.getSelectedItem().toString() , amount);
 					logginUser.add_Expense(new_veh_Tax);
 				break;
 				}
-				
+
 				if(logginUser.checklimit()){
-					JOptionPane.showMessageDialog(getContentPane(), "You exceeded your monthly limit!");
+					JOptionPane.showMessageDialog(getContentPane(), "You have exceeded your monthly limit!");
 				}
-				/*double sum = 0;
-				boolean once_Shown = false;
-				for(Expense expense : logginUser.getExpenses()) {
-					sum =+ expense.getEx_amount();
-				}
-				if(logginUser.getLimit()<sum && !(once_Shown)) {
-					JOptionPane.showMessageDialog(getContentPane(), "You exceeded your monthly limit!");
-					once_Shown = true;
-				}
-				dispose();*/
+				new MainGUI(logginUser, Users);
+				dispose();
 		}});
 		
 		JButton ExpBackButton = new JButton("Back");
@@ -331,7 +324,8 @@ public class Inc_Exp_GUI extends JFrame {
 					cons_ComboBox.setVisible(false);
 					bills_ComboBox.setVisible(false);
 					vehicles_comboBox.setVisible(true);
-					
+					if(logginUser.getVehicles().isEmpty())
+						JOptionPane.showMessageDialog(ExpPanel, "No vehicle is added! Go to Settings to add a vehicle.");
 					ExpAmountField.setText(Double.toString(logginUser.getVehicles().get(vehicles_comboBox.getSelectedIndex()).calculate_veh_charge()));
 				}
 				else if(comboBox.getSelectedIndex()==5) {
@@ -339,12 +333,13 @@ public class Inc_Exp_GUI extends JFrame {
 					cons_ComboBox.setVisible(false);
 					bills_ComboBox.setVisible(false);
 					vehicles_comboBox.setVisible(false);
-					
+					if(logginUser.getEstates().isEmpty())
+						JOptionPane.showMessageDialog(ExpPanel, "No estate is added! Go to Settings to add an estate.");
 					ExpAmountField.setText(Double.toString(logginUser.getEstates().get(estates_comboBox.getSelectedIndex()).calculate_est_charge()));
 				}
 			}
 		});
-		go_Button.setBounds(146, 69, 54, 25);
+		go_Button.setBounds(148, 69, 54, 25);
 		ExpPanel.add(go_Button);
 		
 		//ActionListenr tou ExpButton

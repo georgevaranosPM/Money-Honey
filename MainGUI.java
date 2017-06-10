@@ -19,6 +19,7 @@ public class MainGUI extends JFrame{
 	private Date from_Date;
 	private Date to_Date;
 	private ArrayList<User> Users;
+	private JTextField result_Field;
 	
 	public MainGUI(User logginUser,ArrayList<User> allUsers) {
 		this.Users=allUsers;
@@ -39,11 +40,11 @@ public class MainGUI extends JFrame{
 		
 		for(Income income : logginUser.getIncomes())
 		{
-			listModel.addElement(income.getIn_tag()+ " " + Double.toString(income.getIn_amount())+ "$" );
+			listModel.addElement(income.getIn_tag()+ " " + Double.toString(income.getIn_amount())+ "€" );
 		}
 		Inc_List.setModel(listModel);
 		
-		Inc_List.setBounds(6, 85, 144, 150);
+		Inc_List.setBounds(6, 71, 144, 140);
 		mainPanel.add(Inc_List);
 		
 		
@@ -52,16 +53,12 @@ public class MainGUI extends JFrame{
 		
 		DefaultListModel<String> listModel1 = new DefaultListModel<String>();
 		
-		for(Expense expense : logginUser.getExpenses())
-		{
-			listModel1.addElement(expense.getEx_tag()+ " " + Double.toString(expense.getEx_amount())+ "$" );
+		for(Expense expense : logginUser.getExpenses()) {
+			listModel1.addElement(expense.getEx_tag()+ " " + Double.toString(expense.getEx_amount())+ "€" );
 		}
 		Exp_List.setModel(listModel1);
 		
-		Exp_List.setBounds(6, 85, 144, 150);
-		mainPanel.add(Exp_List);
-		
-		Exp_List.setBounds(159, 85, 144, 150);
+		Exp_List.setBounds(159, 71, 144, 140);
 		mainPanel.add(Exp_List);
 		
 
@@ -94,25 +91,29 @@ public class MainGUI extends JFrame{
 		to_Date_Select.setModel(to_date_Select_Model);
 		to_Date_Select.setEditor(new JSpinner.DateEditor(to_Date_Select,"dd/MM/yyyy"));
 		mainPanel.add(to_Date_Select);
-		
-
-		JButton update_Btn = new JButton("Show");
-
-		update_Btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				from_Date = (Date) from_Date_Select.getValue();
-				to_Date = (Date) to_Date_Select.getValue();
-				if(from_Date.after(to_Date)) {
-
-					JOptionPane.showMessageDialog(null, "Non acceptable date format!");
-
-				}
-			}
-		});
-		update_Btn.setBounds(91, 50, 117, 29);
-		mainPanel.add(update_Btn);
-		update_Btn.setBackground(new Color(240, 110, 118));
 		mainPanel.setBackground(new Color(75, 75, 100));
+		
+		JLabel lblIncomes = new JLabel("Incomes");
+		lblIncomes.setBounds(6, 50, 57, 15);
+		lblIncomes.setForeground(new Color(230, 255, 255));
+		mainPanel.add(lblIncomes);
+		
+		JLabel lblExpenses = new JLabel("Expenses");
+		lblExpenses.setBounds(246, 50, 65, 15);
+		lblExpenses.setForeground(new Color(230, 255, 255));
+		mainPanel.add(lblExpenses);
+
+		result_Field = new JTextField();
+		result_Field.setBounds(157, 217, 55, 23);
+		result_Field.setEditable(false);
+		result_Field.setText(String.valueOf(getResult(logginUser)));
+		mainPanel.add(result_Field);
+		result_Field.setColumns(10);
+		
+		JLabel lblResult = new JLabel("Result");
+		lblResult.setBounds(112, 223, 41, 15);
+		lblResult.setForeground(new Color(230, 255, 255));
+		mainPanel.add(lblResult);
 		
 			
 			///////Right Panel////////
@@ -122,18 +123,32 @@ public class MainGUI extends JFrame{
 			mainRightPanel.setLayout(null);
 			
 
-			JButton deleteBtn = new JButton("Delete");
-			deleteBtn.setBounds(6, 101, 110, 29);
-
-			deleteBtn.setBackground(new Color(240, 110, 118));
-			deleteBtn.addActionListener(new ActionListener() {
+			JButton delete_Inc_Btn = new JButton("Delete Income");
+			delete_Inc_Btn.setBounds(0, 91, 120, 29);
+			delete_Inc_Btn.setBackground(new Color(240, 110, 118));
+			delete_Inc_Btn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					logginUser.getIncomes().remove(Inc_List.getSelectedIndex());
+					listModel.remove(Inc_List.getSelectedIndex());
+					result_Field.setText(String.valueOf(getResult(logginUser)));
 				}
 			});
 			
-			mainRightPanel.add(deleteBtn);
+			mainRightPanel.add(delete_Inc_Btn);
 			mainRightPanel.setBackground(new Color(75, 75, 100));
+			
+			
+			JButton delete_Exp_Btn = new JButton("Delete Expense");
+			delete_Exp_Btn.setBounds(0, 132, 120, 29);
+			delete_Exp_Btn.setBackground(new Color(240, 110, 118));
+			delete_Exp_Btn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					logginUser.getExpenses().remove(Exp_List.getSelectedIndex());
+					listModel1.remove(Exp_List.getSelectedIndex());
+					result_Field.setText(String.valueOf(getResult(logginUser)));
+				}
+			});
+			mainRightPanel.add(delete_Exp_Btn);
 
 		
 		///////South Panel////////
@@ -145,8 +160,8 @@ public class MainGUI extends JFrame{
 
 		JButton graphsBtn = new JButton("Show Diagrams");
 
-		graphsBtn.setSize(190, 29);
-		graphsBtn.setLocation(168, 6);
+		graphsBtn.setSize(160, 25);
+		graphsBtn.setLocation(184, 6);
 		graphsBtn.setBackground(new Color(240, 110, 118));
 		graphsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -237,5 +252,20 @@ public class MainGUI extends JFrame{
 	
 	protected void close_GUI() {
 		this.dispose();
+	}
+	
+	public double getResult(User logginUser) {
+		double expenses_Sum = 0;
+		double incomes_Sum = 0;
+		
+		for(int i=0; i<logginUser.getExpenses().size(); i++) {
+			expenses_Sum =+ logginUser.getExpenses().get(i).getEx_amount();
+		}
+		
+		for(int i=0; i<logginUser.getIncomes().size(); i++) {
+			incomes_Sum =+ logginUser.getIncomes().get(i).getIn_amount();
+		}
+		
+		return (incomes_Sum-expenses_Sum);
 	}
 }

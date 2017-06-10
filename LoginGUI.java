@@ -96,26 +96,25 @@ import javax.swing.JTextField;
                     System.out.println("Name " + user.getUsername());
                 boolean flag=false;
                 for (User user : Users ){
-                    
-                /*    if (Users.isEmpty())
-                        {JOptionPane.showMessageDialog(panel,
-                                "There are no loggin Users");}*/
-                     if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
-                       {    User loggedin_User=user;
-                        flag = true;
-                        new MainGUI(loggedin_User,Users);
-                        dispose();break;
-                        }
-                     		//else JOptionPane.showMessageDialog(panel,
-						    //"User "+UsernameText+" does not exist!");
-                     }
+                     if (user.getUsername().equals(UsernameText)) {    
+                    	if(user.getPassword().equals(PasswordText)) {
+                    		User loggedin_User=user;
+		                    flag = true;
+		                    new MainGUI(loggedin_User,Users);
+		                    dispose();break;
+                    	}
+                    	else
+                    		JOptionPane.showMessageDialog(panel, "Wrong Password!");
+                    	flag = true;
+					}
+                }
                 if(!flag){
                 	JOptionPane.showMessageDialog(panel,
 						    "User "+UsernameText+" does not exist!");
                 }
                      
-                     }
-			});
+			}
+		});
 		panel.add(btnLogin);
 		
 		ImageIcon logo = new ImageIcon("/Users/GeorgeVaranos/Money-Honey/Money_Honey_Logo.png");
