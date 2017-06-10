@@ -232,8 +232,6 @@ public class MainGUI extends JFrame{
 		getContentPane().add(mainLeftPanel);
 		mainLeftPanel.setBackground(new Color(75, 75, 100));
 		
-		ImageIcon image = new ImageIcon("file:///Users/GeorgeVaranos/Money-Honey/add_Btn.png");
-		
 		JButton sbmtBtn = new JButton(new ImageIcon("/Users/GeorgeVaranos/Documents/workspace/Money Honey/bin/add_Btn.png"));
 		sbmtBtn.setBackground(new Color(240, 110, 118));
 		sbmtBtn.setBounds(427, 32, 107, 29);
