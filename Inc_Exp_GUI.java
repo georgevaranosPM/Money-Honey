@@ -187,7 +187,7 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpAmountField.setEditable(false);
 		
 		String[] kindofExpenses = {"Consumable", "Bill", "Tax", "   Income Tax", "   Vehicle Tax", "   Estate Tax"};
-		JComboBox comboBox = new JComboBox(kindofExpenses);
+		JComboBox<String> comboBox = new JComboBox<String>(kindofExpenses);
 		comboBox.setBackground(new Color(240, 110, 118));
 		comboBox.setBounds(6, 70, 130, 22);
 		ExpPanel.add(comboBox);
@@ -195,14 +195,14 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		
 		String[] consumables = def_Cons.getDefault_Consumables();
-		JComboBox cons_ComboBox = new JComboBox(consumables);
+		JComboBox<String> cons_ComboBox = new JComboBox<String>(consumables);
 		cons_ComboBox.setBackground(new Color(240, 110, 118));
 		cons_ComboBox.setBounds(210, 70, 99, 22);
 		ExpPanel.add(cons_ComboBox);
 		cons_ComboBox.setVisible(false);
 		
 		String[] bills = def_Bill.getDefault_Bills();
-		JComboBox bills_ComboBox = new JComboBox(bills);
+		JComboBox<String> bills_ComboBox = new JComboBox<String>(bills);
 		bills_ComboBox.setBackground(new Color(240, 110, 118));
 		bills_ComboBox.setBounds(210, 70, 99, 22);
 		ExpPanel.add(bills_ComboBox);
@@ -212,7 +212,7 @@ public class Inc_Exp_GUI extends JFrame {
 		for(int i=0; i<logginUser.getVehicles().size(); i++) {
 			veh[i] = logginUser.getVehicles().get(i).getVeh_id();
 		}
-		JComboBox vehicles_comboBox = new JComboBox(veh);
+		JComboBox<String> vehicles_comboBox = new JComboBox<String>(veh);
 		vehicles_comboBox.setBounds(210, 71, 99, 20);
 		vehicles_comboBox.setBackground(new Color(240, 110, 118));
 		ExpPanel.add(vehicles_comboBox);
@@ -223,7 +223,7 @@ public class Inc_Exp_GUI extends JFrame {
 		for(int i=0; i<logginUser.getEstates().size(); i++) {
 			est[i] = logginUser.getEstates().get(i).getAddress();
 		}
-		JComboBox estates_comboBox = new JComboBox(est);
+		JComboBox<String> estates_comboBox = new JComboBox<String>(est);
 		estates_comboBox.setBounds(210, 71, 99, 20);
 		estates_comboBox.setBackground(new Color(240, 110, 118));
 		ExpPanel.add(estates_comboBox);
@@ -273,16 +273,20 @@ public class Inc_Exp_GUI extends JFrame {
 					logginUser.add_Expense(new_veh_Tax);
 				break;
 				}
-				double sum = 0;
+				
+				if(logginUser.checklimit()){
+					JOptionPane.showMessageDialog(getContentPane(), "You exceeded your monthly limit!");
+				}
+				/*double sum = 0;
 				boolean once_Shown = false;
-				for(int i=0; i<logginUser.getExpenses().size(); i++) {
-					sum =+ logginUser.getExpenses().get(i).getEx_amount();
+				for(Expense expense : logginUser.getExpenses()) {
+					sum =+ expense.getEx_amount();
 				}
 				if(logginUser.getLimit()<sum && !(once_Shown)) {
 					JOptionPane.showMessageDialog(getContentPane(), "You exceeded your monthly limit!");
 					once_Shown = true;
 				}
-				dispose();
+				dispose();*/
 		}});
 		
 		JButton ExpBackButton = new JButton("Back");

@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Estate {
+public class Estate implements Serializable {
 
 	private String address;
 	private int square_meters;

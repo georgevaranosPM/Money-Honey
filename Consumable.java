@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 public class Consumable extends Expense {
 
 	public String[] default_Consumables = {"Petrol", "Super Market", "Clothing", "Furniture", "Devices", "Car Service", 

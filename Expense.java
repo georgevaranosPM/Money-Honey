@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Expense {
+public class Expense implements Serializable {
 	
 	private String ex_tag;
 	private double ex_amount;

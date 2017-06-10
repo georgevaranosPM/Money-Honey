@@ -84,7 +84,7 @@ public class User implements Serializable {
 	public void add_Vehicle(Vehicle aVehicle){
 		vehicles.add(aVehicle);
 	}
-	// STA PRINT DEN KSERW TI ALLO NA GRAFOYME..TO AFISA ETSI GIA NA DOUME OLOI MAZI PWS THA EMFANIZONTAI
+	
 	public void print_Exp(){
 		for(Expense expense : expenses)
 			System.out.println(expense.getEx_tag() + expense.getEx_amount());
@@ -114,6 +114,16 @@ public class User implements Serializable {
 		return charge;
 	}
 	
+	public boolean checklimit(){
+		boolean overlimit = false;
+		double sum = 0;
+		for(Expense expense : expenses){
+			sum = sum+ expense.getEx_amount();
+		}
+		if(limit<sum)
+			overlimit=true;
+		return overlimit;
+	}
 
 
 }

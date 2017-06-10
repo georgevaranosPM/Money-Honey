@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -26,6 +27,7 @@ import javax.swing.JTextField;
 		this.Users=AllUsers;
 	
 		try{
+			
 			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			AllUsers = (ArrayList<User>)in.readObject();
@@ -35,7 +37,15 @@ import javax.swing.JTextField;
 
 		
 		}
+		
+		    
+		  
+		catch(EOFException eof){
+			
+		}
 		catch(IOException exc)
+			
+		
 		{
 			exc.printStackTrace();
 		}

@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Vehicle {
+public class Vehicle implements Serializable {
 
 	private int cc;
 	private int year;

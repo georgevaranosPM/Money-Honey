@@ -1,4 +1,6 @@
-public class Bill extends Expense{
+import java.io.Serializable;
+
+public class Bill extends Expense {
 
 	public String[] default_Bills = {"Electricity", "Water Supply", "Internet", 
 									"Telephone", "Mobile", "Oil", "Gas", "Rent", "Other"};
