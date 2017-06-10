@@ -2,6 +2,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -21,9 +23,11 @@ public class Inc_Exp_GUI extends JFrame {
 	private Bill def_Bill = new Bill("bill", 0);
 	private Consumable def_Cons = new Consumable("consumable", 0);
 	private Income def_Incomes = new Income("income", 0, false, false);
+	private ArrayList<User> Users;
 
-	public Inc_Exp_GUI(User logginUser) {
+	public Inc_Exp_GUI(User logginUser,ArrayList<User> Users) {
 		
+		this.Users=Users;
 		
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -64,6 +68,7 @@ public class Inc_Exp_GUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				new MainGUI(logginUser,Users);
 				dispose();
 			}
 			
@@ -132,7 +137,7 @@ public class Inc_Exp_GUI extends JFrame {
 				Income income = new Income(income_comboBox.getSelectedItem().toString(), amount, monthly, taxed);
 				logginUser.add_Income(income);
 				logginUser.print_Inc();
-				dispose();
+				
 			}
 			
 		});
@@ -187,7 +192,7 @@ public class Inc_Exp_GUI extends JFrame {
 		ExpAmountField.setEditable(false);
 		
 		String[] kindofExpenses = {"Consumable", "Bill", "Tax", "   Income Tax", "   Vehicle Tax", "   Estate Tax"};
-		JComboBox<String> comboBox = new JComboBox<String>(kindofExpenses);
+		JComboBox comboBox = new JComboBox(kindofExpenses);
 		comboBox.setBackground(new Color(240, 110, 118));
 		comboBox.setBounds(6, 70, 130, 22);
 		ExpPanel.add(comboBox);
@@ -195,14 +200,14 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		
 		String[] consumables = def_Cons.getDefault_Consumables();
-		JComboBox<String> cons_ComboBox = new JComboBox<String>(consumables);
+		JComboBox cons_ComboBox = new JComboBox(consumables);
 		cons_ComboBox.setBackground(new Color(240, 110, 118));
 		cons_ComboBox.setBounds(210, 70, 99, 22);
 		ExpPanel.add(cons_ComboBox);
 		cons_ComboBox.setVisible(false);
 		
 		String[] bills = def_Bill.getDefault_Bills();
-		JComboBox<String> bills_ComboBox = new JComboBox<String>(bills);
+		JComboBox bills_ComboBox = new JComboBox(bills);
 		bills_ComboBox.setBackground(new Color(240, 110, 118));
 		bills_ComboBox.setBounds(210, 70, 99, 22);
 		ExpPanel.add(bills_ComboBox);
@@ -212,7 +217,7 @@ public class Inc_Exp_GUI extends JFrame {
 		for(int i=0; i<logginUser.getVehicles().size(); i++) {
 			veh[i] = logginUser.getVehicles().get(i).getVeh_id();
 		}
-		JComboBox<String> vehicles_comboBox = new JComboBox<String>(veh);
+		JComboBox vehicles_comboBox = new JComboBox(veh);
 		vehicles_comboBox.setBounds(210, 71, 99, 20);
 		vehicles_comboBox.setBackground(new Color(240, 110, 118));
 		ExpPanel.add(vehicles_comboBox);
@@ -223,7 +228,7 @@ public class Inc_Exp_GUI extends JFrame {
 		for(int i=0; i<logginUser.getEstates().size(); i++) {
 			est[i] = logginUser.getEstates().get(i).getAddress();
 		}
-		JComboBox<String> estates_comboBox = new JComboBox<String>(est);
+		JComboBox estates_comboBox = new JComboBox(est);
 		estates_comboBox.setBounds(210, 71, 99, 20);
 		estates_comboBox.setBackground(new Color(240, 110, 118));
 		ExpPanel.add(estates_comboBox);

@@ -20,7 +20,7 @@ public class MainGUI extends JFrame{
 	private Date to_Date;
 	private ArrayList<User> Users;
 	
-	public MainGUI(User loggedin_User,ArrayList<User> allUsers) {
+	public MainGUI(User logginUser,ArrayList<User> allUsers) {
 		this.Users=allUsers;
 		
 		getContentPane().setLayout(null);
@@ -34,33 +34,33 @@ public class MainGUI extends JFrame{
 		
 		//////Lista esodwn///////
 		JList<String> Inc_List = new JList<String>();
-		Inc_List.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		
-		Inc_List.setModel(new AbstractListModel() {
-			String[] Inc_Values = new String[] {"Incomes"};
-			public int getSize() {
-				return Inc_Values.length;
-			}
-			public Object getElementAt(int index) {
-				return Inc_Values[index];
-			}
-		});
+		DefaultListModel<String> listModel = new DefaultListModel<String>();
+		
+		for(Income income : logginUser.getIncomes())
+		{
+			listModel.addElement(income.getIn_tag()+ " " + Double.toString(income.getIn_amount())+ "$" );
+		}
+		Inc_List.setModel(listModel);
+		
 		Inc_List.setBounds(6, 85, 144, 150);
 		mainPanel.add(Inc_List);
 		
 		
 		//////Lista e3odwn///////
 		JList<String> Exp_List = new JList<String>();
-		Exp_List.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		Exp_List.setModel(new AbstractListModel() {
-			String[] Exp_Values = new String[] {"Expenses"};
-			public int getSize() {
-				return Exp_Values.length;
-			}
-			public Object getElementAt(int index) {
-				return Exp_Values[index];
-			}
-		});
+		
+		DefaultListModel<String> listModel1 = new DefaultListModel<String>();
+		
+		for(Expense expense : logginUser.getExpenses())
+		{
+			listModel1.addElement(expense.getEx_tag()+ " " + Double.toString(expense.getEx_amount())+ "$" );
+		}
+		Exp_List.setModel(listModel1);
+		
+		Exp_List.setBounds(6, 85, 144, 150);
+		mainPanel.add(Exp_List);
+		
 		Exp_List.setBounds(159, 85, 144, 150);
 		mainPanel.add(Exp_List);
 		
@@ -150,7 +150,7 @@ public class MainGUI extends JFrame{
 		graphsBtn.setBackground(new Color(240, 110, 118));
 		graphsBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new choose_DiagramGUI(loggedin_User);
+				new choose_DiagramGUI(logginUser);
 			}
 		});
 		mainSouthPanel.add(graphsBtn);
@@ -163,7 +163,7 @@ public class MainGUI extends JFrame{
 		getContentPane().add(mainNorthPanel);
 		mainNorthPanel.setLayout(null);
 		
-		JLabel userLabel = new JLabel(loggedin_User.getUsername());
+		JLabel userLabel = new JLabel(logginUser.getUsername());
 		userLabel.setBounds(32, 14, 100, 16);
 		userLabel.setFont(getFont());
 		userLabel.setForeground(new Color(230, 255, 255));
@@ -182,7 +182,7 @@ public class MainGUI extends JFrame{
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
-				new editGUI(loggedin_User,Users);
+				new editGUI(logginUser,Users);
 			}
 		});
 		mainNorthPanel.add(editProfBtn);
@@ -224,7 +224,8 @@ public class MainGUI extends JFrame{
 		sbmtBtn.setBounds(427, 32, 107, 29);
 		sbmtBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new Inc_Exp_GUI(loggedin_User);
+				new Inc_Exp_GUI(logginUser,Users);
+				close_GUI();
 			}
 		});
 		mainLeftPanel.add(sbmtBtn);
