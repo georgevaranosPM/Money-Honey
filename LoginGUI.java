@@ -84,7 +84,7 @@ import javax.swing.JTextField;
 		        btnLogin.setBounds(250, 197, 84, 29);
                 for(User user: Users)
                     System.out.println("Name " + user.getUsername());
-                
+                boolean flag=false;
                 for (User user : Users ){
                     
                 /*    if (Users.isEmpty())
@@ -92,12 +92,19 @@ import javax.swing.JTextField;
                                 "There are no loggin Users");}*/
                      if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
                        {    User loggedin_User=user;
+                        flag = true;
                         new MainGUI(loggedin_User,Users);
                         dispose();break;
                         }
-
-					else JOptionPane.showMessageDialog(panel,
-						    "User "+UsernameText+" does not exist!");}}
+                     		//else JOptionPane.showMessageDialog(panel,
+						    //"User "+UsernameText+" does not exist!");
+                     }
+                if(!flag){
+                	JOptionPane.showMessageDialog(panel,
+						    "User "+UsernameText+" does not exist!");
+                }
+                     
+                     }
 			});
 		panel.add(btnLogin);
 		
