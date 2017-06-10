@@ -6,8 +6,11 @@ public class Income implements Serializable {
 	private double in_amount;
 	private boolean monthly;
 	private boolean taxed;
+	public String[] default_Incomes = {"Wage", "Rent", "Sales", "Other"};
 	
-
+	public String[] getDefault_Incomes() {
+		return default_Incomes;
+	}
 
 	public Income(String in_tag, double in_amount, boolean monthly, boolean taxed) {
 		super();

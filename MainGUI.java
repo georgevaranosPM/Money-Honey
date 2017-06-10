@@ -179,6 +179,7 @@ public class MainGUI extends JFrame{
 		editProfBtn.setBackground(new Color(240, 110, 118));
 		editProfBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				close_GUI();
 				new editGUI(loggedin_User);
 			}
 		});

@@ -70,7 +70,7 @@ public class add_VehicleGUI extends JFrame{
 				close_GUI();
 			}
 		});
-		end_Btn.setBounds(407, 282, 117, 29);
+		end_Btn.setBounds(417, 303, 117, 29);
 		getContentPane().add(end_Btn);
 		
 		JButton back_Button = new JButton("Back");

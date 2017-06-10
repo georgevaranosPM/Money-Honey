@@ -147,7 +147,6 @@ public class editGUI extends JFrame{
 		JButton end_Btn = new JButton("Complete");
 	end_Btn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				close_GUI();
 				new MainGUI(logginUser);
 			}

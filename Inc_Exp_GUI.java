@@ -16,12 +16,11 @@ import javax.swing.border.EmptyBorder;
 public class Inc_Exp_GUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField IncTagField;
 	private JTextField IncAmountField;
 	private JTextField ExpAmountField;
 	private Bill def_Bill = new Bill("bill", 0);
 	private Consumable def_Cons = new Consumable("consumable", 0);
-	//private ArrayList<Income> incomes;
+	private Income def_Incomes = new Income("income", 0, false, false);
 
 	public Inc_Exp_GUI(User logginUser) {
 		
@@ -82,12 +81,6 @@ public class Inc_Exp_GUI extends JFrame {
 		IncTag_label.setForeground(new Color(230, 255, 255));
 		IncPanel.add(IncTag_label);
 		
-		IncTagField = new JTextField();
-		IncTagField.setBounds(193, 59, 116, 25);
-		IncTagField.setText("(i.e. wage)");
-		IncPanel.add(IncTagField);
-		IncTagField.setColumns(10);
-		
 		JLabel IncAmount_label = new JLabel("Amount");
 		IncAmount_label.setBounds(71, 109, 69, 22);
 		IncAmount_label.setForeground(new Color(230, 255, 255));
@@ -108,6 +101,12 @@ public class Inc_Exp_GUI extends JFrame {
 		ConstantcheckBox.setForeground(Color.RED);
 		ConstantcheckBox.setBounds(250, 180, 140, 25);
 		IncPanel.add(ConstantcheckBox);
+		
+		String[] incomes = def_Incomes.getDefault_Incomes();
+		JComboBox income_comboBox = new JComboBox(incomes);
+		income_comboBox.setBackground(new Color(240, 110, 118));
+		income_comboBox.setBounds(193, 59, 116, 25);
+		IncPanel.add(income_comboBox);
 		
 		
 		JButton AddIncButton = new JButton("Add");
@@ -132,7 +131,7 @@ public class Inc_Exp_GUI extends JFrame {
 					
 					 monthly = true;
 				}
-				Income income = new Income(IncTagField.getText(), amount,monthly,taxed);
+				Income income = new Income(income_comboBox.getSelectedItem().toString(), amount,monthly,taxed);
 				logginUser.add_Income(income);
 				logginUser.print_Inc();
 				
@@ -235,8 +234,9 @@ public class Inc_Exp_GUI extends JFrame {
 		
 		JButton AddExpButton = new JButton("Add");
 		AddExpButton.setBackground(new Color(240, 110, 118));
-		AddExpButton.setBounds(334, 237, 100, 25);
+		AddExpButton.setBounds(340, 237, 100, 25);
 		ExpPanel.add(AddExpButton);
+		
 		//ActionListener gia th kataxwrhsh eksodou
 		AddExpButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -245,14 +245,14 @@ public class Inc_Exp_GUI extends JFrame {
 				switch(selectedKind){
 				case "Consumable" :  System.out.println("Cons");
 					 amount = Double.parseDouble(ExpAmountField.getText());
-					Consumable cons = new Consumable(cons_ComboBox.getName(),amount);
+					Consumable cons = new Consumable(cons_ComboBox.getSelectedItem().toString(),amount);
 					logginUser.add_Expense(cons);
 					logginUser.print_Exp();
 				break;
 				
 				case "Bill" : System.out.println("Bil");
 					 amount = Double.parseDouble(ExpAmountField.getText());
-					Bill bill = new Bill(bills_ComboBox.getName(),amount);
+					Bill bill = new Bill(bills_ComboBox.getSelectedItem().toString(),amount);
 					logginUser.add_Expense(bill);
 					logginUser.print_Exp();
 				break;
