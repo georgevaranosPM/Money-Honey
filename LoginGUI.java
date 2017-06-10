@@ -20,19 +20,29 @@ import javax.swing.JTextField;
  public final  class LoginGUI extends JFrame{
 	private JTextField textField_USERNAME;
 	private JTextField textField_PASSWORD;
+<<<<<<< HEAD
 	private ArrayList<User> Users = new ArrayList<User>();
 	
 	public LoginGUI(  ArrayList<User> AllUsers) {
 		
 		this.Users=AllUsers;
 		
+=======
+	
+	public LoginGUI(ArrayList<User> users) {
+	
+>>>>>>> master
 		try{
 			FileInputStream fileIn = new FileInputStream("MoneyHoneyDB.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			 AllUsers = (ArrayList<User>)in.readObject();
 			in.close();
 			fileIn.close();
+<<<<<<< HEAD
 			//Users.addAll(list);
+=======
+			users.addAll(list);
+>>>>>>> master
 
 		
 		}
@@ -43,7 +53,8 @@ import javax.swing.JTextField;
 		catch(ClassNotFoundException exc)
 		{
 			exc.printStackTrace();
-		}
+		
+		
 		
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -82,12 +93,17 @@ import javax.swing.JTextField;
 					System.out.println("Name " + user.getUsername());
 				String UsernameText = textField_USERNAME.getText();
 				String PasswordText = textField_PASSWORD.getText();
+<<<<<<< HEAD
 				for (User user : Users ){
 					
 				/*	if (Users.isEmpty())
 						{JOptionPane.showMessageDialog(panel,
 							    "There are no loggin Users");}*/
 					 if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
+=======
+				for (User user : users ){
+					if (user.getUsername().equals(UsernameText) && user.getPassword().equals(PasswordText))
+>>>>>>> master
 				       {	User loggedin_User=user;
 						new MainGUI(loggedin_User,Users);
 				       	disposeGUI();break;}
@@ -113,7 +129,11 @@ import javax.swing.JTextField;
 		btnRegister.setBounds(257, 288, 147, 29);
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				new RegisterGUI(Users);
+=======
+				new RegisterGUI(users);
+>>>>>>> master
 				disposeGUI();
 			}
 		});
@@ -123,7 +143,7 @@ import javax.swing.JTextField;
 		this.setVisible(true);
 		this.setSize(540, 360);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
+	}}
 
 	public  void disposeGUI(){
 		this.dispose();

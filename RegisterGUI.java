@@ -1,6 +1,13 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+<<<<<<< HEAD
+=======
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+>>>>>>> master
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
@@ -19,11 +26,16 @@ public class RegisterGUI extends JFrame {
 	private JTextField passwordField;
 	private JTextField fullnameField;
 	private JTextField limitField;
+<<<<<<< HEAD
 	private ArrayList<User> Users = new ArrayList<User>();
 	
 	public RegisterGUI(ArrayList<User> allUsers) {
 		
 		this.Users= allUsers;
+=======
+	User newUser;
+	public RegisterGUI(ArrayList<User> users) {
+>>>>>>> master
 		
 		JPanel panel = new JPanel();
 		this.setSize(540,360);
@@ -93,10 +105,15 @@ public class RegisterGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			double limit = Double.parseDouble(limitField.getText());
 			User user = new User(usernameField.getText(),passwordField.getText(),limit);
+<<<<<<< HEAD
 			Users.add(user);
 			for(User user1 : Users)
 				System.out.println("Name " + user1.getUsername());
 			new MainGUI(user,Users);
+=======
+			users.add(user);
+			new MainGUI(user);
+>>>>>>> master
 			dispose();
 			}
 		});
@@ -108,7 +125,11 @@ public class RegisterGUI extends JFrame {
 		back_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close_GUI();
+<<<<<<< HEAD
 				//new LoginGUI();
+=======
+				new LoginGUI(users);
+>>>>>>> master
 			}
 		});
 		back_Button.setBounds(6, 282, 117, 29);
